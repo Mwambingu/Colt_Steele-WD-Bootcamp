@@ -1,0 +1,47 @@
+* {
+    background-color: paleturquoise;
+    font-family: "Quicksand", serif;
+}
+
+button {
+    font-size: 30px;
+}
+
+#login-btn {
+    background-color: grey;
+    font-size: 15px;
+}
+
+#signup-btn {
+    background-color: black;
+    color: grey;
+    font-size: 15px;
+}
+
+.vote-button {
+    background-color: lightgreen;
+    font-size: 15px;
+}
+
+.vote-button:hover {
+    background-color: greenyellow;
+    font-size: 20px;
+}
+
+.tag {
+    font-size: small;
+    font-style: italic;
+    color: lightcoral;
+}
+
+.posts {
+    font-family: monospace;
+}
+
+input:active {
+    color: red;
+}
+
+p::first-letter {
+    font-size: 30px;
+}
