@@ -1,0 +1,39 @@
+body {
+    background-color: #555;
+    width: 60%;
+    margin: auto;
+    border: black solid 2px;
+    text-align: center;
+}
+div {
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #999;
+    height: 270px;
+    width: 200px;
+    padding: 10px;
+    margin: 20px 10px;
+    border-radius: 10px 10px;
+    -webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+    -ms-border-radius: 10px 10px;
+    -o-border-radius: 10px 10px;
+}
+
+button {
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 10px 5px;
+    width: 100px;
+    -webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 5px;
+    -ms-border-radius: 10px 5px;
+    -o-border-radius: 10px 5px;
+}
+
+button:hover {
+    background-color: antiquewhite;
+    color: orange;
+    border: orange 2px solid;
+}

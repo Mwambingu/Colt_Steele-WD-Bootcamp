@@ -1,0 +1,42 @@
+section div {
+    display: inline-block;
+}
+div {
+    height: 100px;
+    width: 100px;
+    margin: 30px 10px;
+    box-sizing: border-box;
+    border: 5px solid black;
+}
+.div1 {
+    background-color: aquamarine;
+}
+.div2 {
+    background-color: lemonchiffon;
+}
+.div3 {
+    background-color: royalblue;
+}
+
+#static .div2 {
+    position: static;
+    top: 50px;
+    bottom: 50px;
+}
+
+#relative .div2 {
+    position: relative;
+    top: 50px;
+    bottom: 50px;
+}
+
+#absolute .div2 {
+    position: absolute;
+    top: 50px;
+    right: 150px;
+}
+
+#fixed .div2 {
+    position: fixed;
+    top: 0px;
+}
