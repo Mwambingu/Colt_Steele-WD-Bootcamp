@@ -1,0 +1,90 @@
+body {
+    background-color: #727272;
+    font-family: "Roboto Slab", sans-serif;
+    color: white;
+    letter-spacing: 1px;
+}
+
+h1 {
+    margin: 20px auto;
+    text-align: center;
+    padding-top: 20px;
+    background-color: black;
+    width: 320px;
+    height: 60px;
+    border: solid 3px black;
+}
+
+.container div:nth-of-type(1) h1 {
+    background-color: lightcoral;
+    transform: rotate(45deg);
+    transition: 1s ease-in;
+}
+.container:hover div:nth-of-type(1) h1 {
+    transform: rotate(0);
+}
+.container div:nth-of-type(2) h1 {
+    background-color: rgb(223, 148, 79);
+    transform: scale(0.25);
+    transition: 1s ease-out;
+}
+.container:hover div:nth-of-type(2) h1 {
+    background-color: rgb(223, 148, 79);
+    transform: scale(1);
+}
+.container div:nth-of-type(3) h1 {
+    background-color: rgb(129, 205, 240);
+    transform: translateX(600px);
+    transition: 1s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.container:hover div:nth-of-type(3) h1 {
+    background-color: rgb(129, 205, 240);
+    transform: translateX(0px);
+}
+.container div:nth-of-type(4) h1 {
+    background-color: rgb(182, 61, 61);
+    transform: skewY(19deg) scale(3.3);
+    transition: 2s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.container:hover div:nth-of-type(4) h1 {
+    background-color: rgb(182, 61, 61);
+    transform: skewY(0deg) scale(1);
+}
+.container div:nth-of-type(5) h1 {
+    background-color: rgb(240, 186, 125);
+    transform: scale(0.6) rotate(90deg) translateY(700px);
+    transition: 1s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.container:hover div:nth-of-type(5) h1 {
+    transform: scale(1) rotate(0) translateY(0);
+}
+.container div:nth-of-type(6) h1 {
+    background-color: rgb(173, 101, 17);
+    transform: skew(33deg) scale(1.5) translateX(900px);
+    transition: 2.5s;
+    transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.container:hover div:nth-of-type(6) h1 {
+    transform: skew(0) scale(1) translateX(0);
+}
+.container div:nth-of-type(7) h1 {
+    background-color: rgb(103, 236, 219);
+    transform: translateY(800px);
+    transition: 2.5s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.container:hover div:nth-of-type(7) h1 {
+    transform: translateY(0);
+}
+.container div:nth-of-type(8) h1 {
+    background-color: rgb(206, 106, 197);
+    transform: translateY(600px);
+    transition: 2.5s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+.container:hover div:nth-of-type(8) h1 {
+    transform: translateY(0);
+}
