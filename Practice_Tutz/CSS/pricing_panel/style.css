@@ -1,9 +1,9 @@
 :root {
-    --clr1: #22577a;
-    --clr2: #38a3a5;
-    --clr3: #57cc99;
-    --clr4: #80ed99;
-    --clr5: #c7f9cc;
+    --clr1: #dad7cd;
+    --clr2: #a3b18a;
+    --clr3: #588157;
+    --clr4: #3a5a40;
+    --clr5: #344e41;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--clr5);
+    background-color: var(--clr1);
 }
 
 .section-image {
@@ -35,7 +35,7 @@ body {
     align-items: center;
     border-radius: 20px;
     font-size: 1rem;
-    box-shadow: 1px 1px 5px 1px var(--clr3);
+    box-shadow: 1px 2px 5px 0px var(--clr4);
 }
 
 .container-section {
@@ -58,7 +58,7 @@ body {
     font-family: "Oswald", sans-serif;
     letter-spacing: 2px;
     font-size: 1em;
-    color: var(--clr2);
+    color: var(--clr4);
 }
 
 .tier-info {
@@ -74,7 +74,7 @@ body {
     font-family: "Oswald", sans-serif;
     font-size: 1.4em;
     letter-spacing: 2px;
-    color: var(--clr2);
+    color: var(--clr4);
 }
 
 .btn {
@@ -87,6 +87,19 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
+    border: none;
+    box-shadow: -1px 1px 1px 1px var(--clr2);
+    transition: background-color 0.25s, color 0.25s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-transition: background-color 0.25s, color 0.25s;
+    -moz-transition: background-color 0.25s, color 0.25s;
+    -ms-transition: background-color 0.25s, color 0.25s;
+    -o-transition: background-color 0.25s, color 0.25s;
+}
+
+.btn:hover {
+    background-color: var(--clr2);
+    color: white;
 }
 
 @media (min-width: 1400px) {
