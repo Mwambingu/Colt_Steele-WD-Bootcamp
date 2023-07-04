@@ -136,7 +136,43 @@ table {
     --green-5: #ecf39e;
 }
 
+body {
+    font-family: "Montserrat", sans-serif;
+}
 img {
     height: 500px;
     width: 400px;
+}
+
+.navbar {
+    background-color: var(--green-1);
+}
+
+.navbar-brand {
+    color: var(--green-5);
+    font-weight: 700;
+}
+
+.navbar-brand:hover {
+    color: var(--green-5);
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--green-4);
+    font-weight: 300;
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: var(--green-4);
+    font-weight: 700;
+}
+
+.toggler-btn {
+    color: var(--green-4);
+}
+
+.container {
+    min-width: 100vw;
 }
