@@ -135,3 +135,8 @@ table {
     --green-4: #90a955;
     --green-5: #ecf39e;
 }
+
+img {
+    height: 500px;
+    width: 400px;
+}
