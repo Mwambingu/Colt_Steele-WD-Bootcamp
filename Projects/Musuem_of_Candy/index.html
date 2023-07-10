@@ -54,47 +54,47 @@
             </div>
         </nav>
         <main class="container">
-            <div class="row my-5">
+            <div class="row mb-5 content-container">
                 <div
-                    class="col-6 classy-header text-uppercase row align-content-center justify-content-center"
+                    class="col-6 classy-header text-uppercase d-flex flex-column justify-content-between align-items-center"
                 >
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
                         >plants
                     </div>
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
                         >plants
                     </div>
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
                         >plants
                     </div>
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
                         >plants
                     </div>
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
                         >plants
                     </div>
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
                         >plants
                     </div>
-                    <div class="col-md-8">
+                    <div>
                         Museum<span class="text-stems">/</span>of<span
                             class="text-stems"
                             >/</span
@@ -103,13 +103,13 @@
                 </div>
                 <div class="col-6 img-1"></div>
             </div>
-            <div class="row my-5">
+            <div class="row mb-5 content-container">
                 <div class="col-6 img-2"></div>
                 <div
                     class="col-6 museum-content text-center d-flex flex-column justify-content-center align-items-center"
                 >
                     <h1 class="display-6 text-uppercase">Museum of plants</h1>
-                    <div class="my-5"><i class="bi bi-tree"></i></div>
+                    <div class="mb-5"><i class="bi bi-tree"></i></div>
                     <p class="w-75">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Delectus vel eius eum minus quasi ut inventore
@@ -126,12 +126,12 @@
                     </p>
                 </div>
             </div>
-            <div class="row my-5">
+            <div class="row mb-5 content-container">
                 <div
                     class="col-6 museum-content text-center d-flex flex-column justify-content-center align-items-center"
                 >
                     <h1 class="display-6 text-uppercase">Museum of plants</h1>
-                    <div class="my-5"><i class="bi bi-tree"></i></div>
+                    <div class="mb-5"><i class="bi bi-tree"></i></div>
                     <p class="w-75">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Delectus vel eius eum minus quasi ut inventore
@@ -149,13 +149,13 @@
                 </div>
                 <div class="col-6 img-3"></div>
             </div>
-            <div class="row my-5">
+            <div class="row mb-5 content-container">
                 <div class="col-6 img-4"></div>
                 <div
                     class="col-6 museum-content text-center d-flex flex-column justify-content-center align-items-center"
                 >
                     <h1 class="display-6 text-uppercase">Museum of plants</h1>
-                    <div class="my-5"><i class="bi bi-tree"></i></div>
+                    <div class="mb-5"><i class="bi bi-tree"></i></div>
                     <p class="w-75">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Delectus vel eius eum minus quasi ut inventore
@@ -183,6 +183,17 @@
             integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
             crossorigin="anonymous"
         ></script>
+        <script>
+            window.addEventListener("scroll", function () {
+                var navElement = document.querySelector(".navbar"); // Replace 'nav' with the appropriate selector for your navigation element
+
+                if (window.scrollY > 0) {
+                    navElement.style.background = "#132a13"; // Replace '#000000' with the desired background color
+                } else {
+                    navElement.style.background = "transparent"; // Replace 'transparent' with the default background color of your navigation element
+                }
+            });
+        </script>
     </body>
 </html>
 
