@@ -308,3 +308,10 @@ div i {
         background-color: #132a13;
     }
 }
+
+@media (max-width: 576px) {
+    .img-1 {
+        background-position: top;
+        height: 650px;
+    }
+}
