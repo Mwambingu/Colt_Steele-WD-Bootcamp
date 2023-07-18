@@ -18,6 +18,19 @@
 // 1 === "1" > false
 // 1 !== "1" > true
 
+// Truthyness & Falsyness
+// Falsy values
+// false
+// 0
+// "" (empty string)
+// undefined
+// NaN
+
+// Logical Operators
+// && and => both values have to be true
+// || or => only one has to be true
+// \! not => evaluates false outcomes to true and vice versa
+
 console.log("Hello World");
 
 function calc() {
@@ -56,5 +69,41 @@ function checkDay(daysOfTheWeek) {
         console.log("It's Friday. Where the heck are you?");
     } else {
         console.log("Is it Friday yet?");
+    }
+}
+
+function checkPass() {
+    const password = prompt("Enter new password: ");
+    if (password.length >= 6) {
+        alert("Long enough password!");
+        if (password.indexOf(" ") === -1) {
+            alert("Good job! No space");
+        } else {
+            alert("Password cannot contain spaces");
+        }
+    } else {
+        alert("Password too short!");
+    }
+}
+
+function arrayMontage() {
+    let people = ["Matonga", "Adonga", "Badonga", "Radonga", "Lodonga"];
+    let nums = [1, 2, 3, 4, 5];
+    console.log(people);
+    people.push(nums);
+    console.log(people);
+    for (x in people) {
+        if (typeof people[x] === "object") {
+            console.log("Found an object! Might be an array!!");
+            console.log(x);
+            for (y in x) {
+                console.log(x[y]);
+            }
+            people.pop(people[x]);
+            console.log("Popped that bugger object!!");
+            console.log(people);
+        } else {
+            console.log(people[x]);
+        }
     }
 }
