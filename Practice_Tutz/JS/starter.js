@@ -90,7 +90,8 @@ function arrayMontage() {
     let people = ["Matonga", "Adonga", "Badonga", "Radonga", "Lodonga"];
     let nums = [1, 2, 3, 4, 5];
     console.log(people);
-    people.push(nums);
+    // people = people.push(nums);
+    // people = people.concat(nums);
     console.log(people);
     for (x in people) {
         if (typeof people[x] === "object") {
@@ -102,8 +103,29 @@ function arrayMontage() {
             people.pop(people[x]);
             console.log("Popped that bugger object!!");
             console.log(people);
+            return people;
         } else {
             console.log(people[x]);
+            return people;
         }
     }
+    return people;
 }
+
+// Object Literals
+const person = {
+    name: "Roberto",
+    age: 33,
+    sex: "Male",
+    country: "Brazil",
+    city: "Rio De Janeiro",
+    greeting: function () {
+        console.log("Hello my name is Roberto");
+    },
+    favSnack: {
+        name: "Gummy Bears",
+        inStock: true,
+        price: 1.99,
+        flavors: ["grape", "apple", "cherry"],
+    },
+};
