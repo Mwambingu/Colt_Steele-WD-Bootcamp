@@ -129,3 +129,109 @@ const person = {
         flavors: ["grape", "apple", "cherry"],
     },
 };
+
+// Guessing Game
+function guessingGame() {
+    let maxNum = Number(prompt("Welcome enter max number: "));
+    while (!maxNum) {
+        maxNum = Number(prompt("That is not a number! Enter again: "));
+    }
+    const randNum = Math.ceil(Math.random() * maxNum);
+    console.log(randNum);
+    let guessNum = 0;
+    let tries = 0;
+    let guessStr = "";
+
+    while (guessNum !== randNum) {
+        guessStr = prompt("Guess the number or Type 'q' to quit the game: ");
+        if (guessStr === "q") {
+            alert("Goodbye!!");
+            break;
+        } else {
+            guessNum = Number(guessStr);
+            if (!guessNum) {
+                alert("That is not a number!!");
+            } else if (guessNum > maxNum) {
+                alert("Guess is out of bounds. Try Again!");
+            } else {
+                if (guessNum > randNum) {
+                    if (guessNum - randNum >= 5 && guessNum - randNum <= 10) {
+                        alert("Almost there!!");
+                    } else if (guessNum - randNum > 10) {
+                        alert("So far away!!");
+                    } else {
+                        alert("It's right there. Look around!!");
+                    }
+                }
+                if (randNum > guessNum) {
+                    if (randNum - guessNum >= 5 && randNum - guessNum <= 10) {
+                        alert("Almost there!!");
+                    } else if (randNum - guessNum > 10) {
+                        alert("So far away!!");
+                    } else {
+                        alert("It's right there. Look around!!");
+                    }
+                }
+                tries++;
+            }
+        }
+    }
+    if (guessStr !== "q") {
+        alert(`Congratulations!! You are correct!! It took ${tries} tries`);
+    }
+}
+
+// \Todo-list app
+// Features -> New, List, Delete and Quit
+function todoApp() {
+    // let todoList = [];
+    let todoList = ["Hello", "World", "My mans"];
+    let newTodo = "";
+    let exitTodo = false;
+    while (!exitTodo) {
+        choice = prompt(
+            "What would you like to do? Type number or word to select an option: \n1. New - create a new todo\n2. List - list all your current todos\n3. Delete - delete a specific todo \n4. Quit - exit the application"
+        ).toLowerCase();
+
+        if (choice === "1" || choice === "new") {
+            newTodo = String(prompt("Enter new todo: "));
+            todoList.push(newTodo);
+            alert("Todo added!!");
+        } else if (choice === "2" || choice === "list") {
+            console.log("Current Todos: ");
+            for (let todo of todoList) {
+                console.log(`${todoList.indexOf(todo) + 1}. ${todo}`);
+            }
+        } else if (choice === "3" || choice === "delete") {
+            let deleteChoice = undefined;
+            deleteChoice = String(
+                prompt(
+                    "Type number of todo to delete or 'all' to delete every todo: "
+                )
+            );
+            if (deleteChoice === "all") {
+                let listLength = 0;
+                listLength = todoList.length;
+                for (let i = 0; i < listLength; i++) {
+                    todoList.pop();
+                }
+                alert("Deleted all todos");
+            } else if (!Number(deleteChoice)) {
+                alert("Incorrect choice or Todo doesn't exist");
+            } else if (
+                Number(deleteChoice) > todoList.length ||
+                Number(deleteChoice) <= 0
+            ) {
+                alert("Todo doesn't exist");
+            } else {
+                todoList.splice(Number(deleteChoice) - 1, 1);
+                alert("Deleted Todo!");
+            }
+        } else if (choice === "4" || choice === "quit") {
+            alert("Bye!");
+            exitTodo = true;
+        } else {
+            alert("Error incorrect choice!!");
+        }
+    }
+}
