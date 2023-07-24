@@ -217,7 +217,7 @@ function todoApp() {
                 }
                 alert("Deleted all todos");
             } else if (!Number(deleteChoice)) {
-                alert("Incorrect choice or Todo doesn't exist");
+                alert("Incorrect choice");
             } else if (
                 Number(deleteChoice) > todoList.length ||
                 Number(deleteChoice) <= 0
@@ -235,3 +235,13 @@ function todoApp() {
         }
     }
 }
+
+const capitalize = function (uncapStr) {
+    let firstLetter = uncapStr.slice(0, 1);
+    let restLetters = uncapStr.slice(1, uncapStr.length);
+    return firstLetter.toUpperCase() + restLetters;
+};
+
+console.log(capitalize("eggplant"));
+console.log(capitalize("pamplemousse"));
+console.log(capitalize("squid"));
