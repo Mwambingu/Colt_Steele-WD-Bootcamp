@@ -4,7 +4,7 @@
 // Booleans - True & False
 // Undefined & Null
 
-// Variables -> let, const
+// Variables -> let, const -> Block Scoped, var -> global scoped
 
 //  I++ vs ++I
 // I++ post increment operator -> returns current value of I before increment
