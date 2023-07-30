@@ -170,23 +170,25 @@ function everySome() {
 // reduce function takes 2 arguemnts -> accumulator and current value
 // accumulator is the target to reduce to
 // current value each individual element in the array
-const array1 = [1, 2, 3, 4];
+function workingWithReduce() {
+    const array1 = [1, 2, 3, 4];
 
-// 0 + 1 + 2 + 3 + 4
-let initialValue = 0;
-const sumWithInitial = array1.reduce((accumulator, currentValue) => {
-    console.log(initialValue);
-    initialValue++;
-    return accumulator + currentValue;
-}, 100);
+    // 0 + 1 + 2 + 3 + 4
+    let initialValue = 0;
+    const sumWithInitial = array1.reduce((accumulator, currentValue) => {
+        console.log(initialValue);
+        initialValue++;
+        return accumulator + currentValue;
+    }, 100);
 
-console.log(sumWithInitial);
+    console.log(sumWithInitial);
 
-const exams = [80, 98, 92, 78, 77, 90, 89, 84, 81, 77];
+    const exams = [80, 98, 92, 78, 77, 90, 89, 84, 81, 77];
 
-console.log(
-    exams.reduce(
-        (minScore, score) => (minScore < score ? minScore : score),
-        100
-    )
-);
+    console.log(
+        exams.reduce(
+            (minScore, score) => (minScore < score ? minScore : score),
+            100
+        )
+    );
+}

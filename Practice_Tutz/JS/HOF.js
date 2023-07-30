@@ -48,7 +48,7 @@ const calculator = {
     },
 };
 
-// This Keyword -> The value of this depends on the invocation context of the function it's used
+// This Keyword -> The value of this depends on the invocation context of the function it's used in
 const human = {
     firstName: "Robertson",
     age: "31",
