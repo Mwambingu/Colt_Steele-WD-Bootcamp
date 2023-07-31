@@ -40,10 +40,10 @@ const calculator = {
         return num1 * num2;
     },
     // Shorthand
-    square(num1, num2) {
-        return num1 ** num2;
+    square(num) {
+        return num ** 2;
     },
-    cube(num1, num2) {
+    cube(num) {
         return num ** 3;
     },
 };
