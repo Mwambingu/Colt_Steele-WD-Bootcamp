@@ -1,0 +1,227 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* My fonts */
+/* font-family: 'Alfa Slab One', cursive;
+font-family: 'Chakra Petch', sans-serif;
+font-family: 'Teko', sans-serif;
+font-family: 'Tektur', cursive;
+font-family: 'Victor Mono', monospace; */
+
+.container {
+    max-width: 1040px;
+    min-height: 100vh;
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: "Alfa Slab One", cursive;
+    font-weight: 700;
+    font-size: 2.5em;
+    letter-spacing: 4px;
+    color: #ffba08;
+    width: 400px;
+    align-self: center;
+    text-align: center;
+    background-color: #e85d04;
+    display: flex;
+    justify-content: center;
+    padding: 5px 2.5px;
+    border-radius: 30px;
+    box-shadow: 0px 1px 10px 0px #3706175d;
+    margin-bottom: 20px;
+}
+
+h1 {
+    width: 390px;
+    align-self: center;
+    text-align: center;
+    background-color: #370617;
+    border-radius: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pokemon-card {
+    height: 200px;
+    width: 150px;
+    margin: 0 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.25s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.pokemon-img {
+    height: 150px;
+    width: 150px;
+}
+
+.pokemon-name-container {
+    background-color: #e85d04;
+    display: flex;
+    justify-content: center;
+    padding: 5px 2.5px;
+    border-radius: 30px;
+    box-shadow: 0px 1px 10px 0px #3706175d;
+    margin-bottom: 20px;
+    width: 100px;
+}
+
+.pokemon-name {
+    font-family: "Victor Mono", monospace;
+    font-size: 0.8em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #ffba08;
+    align-self: center;
+    text-align: center;
+    background-color: #370617;
+    border-radius: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 95%;
+}
+
+.pokemon-card:hover {
+    border-radius: 20px;
+    border: 1px solid #e85d04;
+    box-shadow: 0 4px 2px -2px #3706175d;
+}
