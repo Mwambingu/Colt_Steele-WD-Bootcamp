@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>This with Events</title>
+        <style>
+            button {
+                width: 100px;
+                height: 100px;
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+        <button>CLICK</button>
+
+        <script>
+            const randColor = () => {
+                let hexChars = [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "0",
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "e",
+                    "f",
+                ];
+                let hexStr = "";
+                for (let i = 0; i < 6; i++) {
+                    let randChar = hexChars[Math.floor(Math.random() * 16)];
+                    hexStr += randChar;
+                }
+                return hexStr;
+            };
+            const buttons = document.querySelectorAll("button");
+            //for (let button of buttons) {
+            //button.addEventListener("click", () => {
+            //button.style.backgroundColor = `#${randColor()}`;
+            //button.style.color = `#${randColor()}`;
+            //});
+            //}
+            //for (let button of buttons) {
+            //button.addEventListener("click", function () {
+            //this.style.backgroundColor = `#${randColor()}`;
+            //this.style.color = `#${randColor()}`;
+            //});
+            //}
+            function colorize() {
+                this.style.backgroundColor = `#${randColor()}`;
+                this.style.color = `#${randColor()}`;
+            }
+
+            for (let button of buttons) {
+                button.addEventListener("click", colorize);
+            }
+        </script>
+    </body>
+</html>

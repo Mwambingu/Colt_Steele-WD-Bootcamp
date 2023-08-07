@@ -28,3 +28,45 @@ btn3.addEventListener("click", () => {
 btn3.addEventListener("click", () => {
     setTimeout(clearMetamorph, 5000);
 });
+
+// event Object
+document.querySelector("#btn4").addEventListener("click", (evt) => {
+    console.log(evt);
+    if (evt.clientX > 30) {
+        alert("That's the right side!");
+    } else if (evt.clientX < 10) {
+        alert("That's the left side!");
+    } else {
+        alert("That's the center man!!");
+    }
+});
+
+const input = document.querySelector("input");
+input.addEventListener("keyup", (evt) => {
+    console.log("Key Up");
+});
+input.addEventListener("keydown", (evt) => {
+    console.log(evt.key);
+    console.log(evt.code);
+});
+
+window.addEventListener("keydown", (evt) => {
+    switch (evt.code) {
+        case "ArrowUp":
+            alert("UP");
+            break;
+        case "ArrowDown":
+            alert("DOWN");
+            break;
+        case "ArrowLeft":
+            alert("LEFT");
+            break;
+        case "ArrowRight":
+            alert("RIGHT");
+            break;
+        default:
+            break;
+    }
+});
+
+// New event versions --> Form Events
