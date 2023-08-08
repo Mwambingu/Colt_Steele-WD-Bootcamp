@@ -68,5 +68,3 @@ window.addEventListener("keydown", (evt) => {
             break;
     }
 });
-
-// New event versions --> Form Events

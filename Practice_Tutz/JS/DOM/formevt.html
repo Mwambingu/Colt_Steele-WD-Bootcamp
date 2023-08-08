@@ -68,7 +68,7 @@
                 margin-bottom: 15px;
             }
 
-            #submit-btn {
+            .btn {
                 width: 100px;
                 border-radius: 5px;
                 background-color: #588157;
@@ -89,9 +89,9 @@
                 letter-spacing: 1.5px;
             }
 
-            #submit-btn:hover,
-            #submit-btn:active,
-            #submit-btn:focus {
+            .btn:hover,
+            .btn:active,
+            .btn:focus {
                 background-color: #a3b18a;
             }
             input:active,
@@ -101,6 +101,14 @@
 
             a:hover {
                 border-bottom: 1px solid #344e41;
+            }
+
+            .hide {
+                display: none;
+            }
+
+            .bigger {
+                font-size: 2em;
             }
         </style>
     </head>
@@ -119,15 +127,64 @@
             </p>
             <form action="" id="egg-form">
                 <input
+                    id="eggInput"
                     type="text"
                     name="zip-code"
                     placeholder="Enter Zip Code..."
                 />
-                <button id="submit-btn" type="submit">Continue</button>
+                <button id="submit-btn" class="btn" type="submit">
+                    Continue
+                </button>
             </form>
             <div>
                 <a href="">How it Works</a>
             </div>
+        </div>
+        <div class="container">
+            <h1 id="changeH1">Change Event</h1>
+            <input type="text" name="" id="changeEvent" />
+            <div style="margin: 20px"></div>
+            <h1 id="inputH1">Input Event</h1>
+            <input type="text" name="" id="inputEvent" />
+        </div>
+        <!-- Event bubbling -->
+        <div class="container">
+            <h1 id="">Event Bubbling</h1>
+            <p onclick="alert('Paragraph Clicked!')">
+                Test Paragraph. Here it is
+                <button onclick="alert('Button Clicked!')">Click Me</button>
+            </p>
+            <div id="div-to-hide">
+                This is a div that should be hidden
+                <button id="change-color">Change Color</button>
+            </div>
+        </div>
+        <!-- Event Delegation -->
+        <div class="container">
+            <h1 id="">Event Delegation</h1>
+            <div>
+                <form id="tweetForm" action="/submit">
+                    <label for="username">
+                        Username
+                        <input type="text" name="username" id="username" />
+                    </label>
+                    <label for="tweet">
+                        Tweet
+                        <input type="text" name="tweet" id="tweet" />
+                    </label>
+                    <div style="margin: 20px"></div>
+                    <button
+                        id="post-btn"
+                        class="btn"
+                        style="display: block"
+                        type="submit"
+                    >
+                        POST
+                    </button>
+                </form>
+            </div>
+            <div style="margin: 20px"></div>
+            <ul id="list"></ul>
         </div>
         <script src="evtform.js"></script>
     </body>
