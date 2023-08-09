@@ -10,6 +10,8 @@ playerOneBtn.addEventListener("click", () => {
     value += 1;
     scorep1.innerText = value;
     scorep1.style.color = "#ff7d00";
+    console.log(value);
+    console.log(select.value);
     if (Number(value) === Number(select.value)) {
         alert("Player 1 Wins");
         playerOneBtn.setAttribute("disabled", "disabled");
@@ -22,6 +24,8 @@ playerTwoBtn.addEventListener("click", () => {
     value += 1;
     scorep2.innerText = value;
     scorep2.style.color = "#78290f";
+    console.log(value);
+    console.log(select.value);
     if (Number(value) === Number(select.value)) {
         alert("Player 2 Wins");
         playerOneBtn.setAttribute("disabled", "disabled");
@@ -34,7 +38,6 @@ resetBtn.addEventListener("click", () => {
     for (let btn of buttons) {
         btn.innerText = 0;
         btn.style.color = "#001524";
-        btn.removeAttribute("disabled");
     }
     select.removeAttribute("disabled");
     select.value = "";
@@ -43,5 +46,7 @@ resetBtn.addEventListener("click", () => {
 select.addEventListener("change", () => {
     if (select.value !== "") {
         select.setAttribute("disabled", "disabled");
+        playerOneBtn.removeAttribute("disabled");
+        playerTwoBtn.removeAttribute("disabled");
     }
 });
