@@ -136,11 +136,17 @@ table {
     --maroon: #78290f;
 }
 
-body {
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+body {
     background-color: var(--dark);
     font-family: "Nunito", sans-serif;
     color: var(--dark);
+    transition: all 0.25s ease-in;
 }
 
 .mb {
@@ -148,7 +154,8 @@ body {
 }
 
 .container {
-    margin: 50px auto;
+    margin: 15px auto;
+    margin-bottom: 5px;
     padding: 30px;
     background-color: var(--creamy);
     height: 600px;
@@ -158,9 +165,36 @@ body {
     justify-content: space-evenly;
 }
 
-img {
-    height: 300px;
+.container2 {
+    margin: 0px auto;
+    background-color: var(--creamy);
+    height: 100px;
     width: 600px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.congrats {
+    font-size: 3em;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.player-name {
+    font-size: 1.5em;
+    font-family: "ubuntu", sans-serif;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+
+img {
+    align-self: center;
+    height: 300px;
+    width: 540px;
 }
 
 .header {
@@ -203,24 +237,20 @@ img {
 }
 
 .btns button {
-    width: 190px;
+    width: 170px;
+    height: 50px;
     padding: 5px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-family: "Nunito", sans-serif;
     font-weight: 700;
     border-radius: 5px;
-    border: 2px solid var(--dark);
-    transition: box-shadow 0.25s, border 0.25s, font-size 0.25s;
-    -webkit-transition: box-shadow 0.25s, border 0.25s, font-size 0.25s;
-    -moz-transition: box-shadow 0.25s, border 0.25s, font-size 0.25s;
-    -ms-transition: box-shadow 0.25s, border 0.25s, font-size 0.25s;
-    -o-transition: box-shadow 0.25s, border 0.25s, font-size 0.25s;
-}
-
-.btns button:hover {
-    box-shadow: 0px 2px 5px 0px var(--dark-light);
     border: 0px;
-    font-size: 1.6em;
+    box-shadow: 0px 2px 5px 0px var(--dark-light);
+    transition: font-size 0.15s ease-in;
+    -webkit-transition: font-size 0.15s ease-in;
+    -moz-transition: font-size 0.15s ease-in;
+    -ms-transition: font-size 0.15s ease-in;
+    -o-transition: font-size 0.15s ease-in;
 }
 
 .player-one {
