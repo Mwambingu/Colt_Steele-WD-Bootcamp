@@ -1,4 +1,4 @@
-# PING PONG PROJECT - Colt Steele Udemy Course
+# SCORE KEEPER PROJECT - Colt Steele Udemy Course
 
 ## Table of contents
 
@@ -10,7 +10,7 @@
 
 ## Overview
 
-My version of Colt's Steele Ping Pong Project. Final project on DOM Manipulation. Cohesively merging all topics learned on (HTML, CSS and Javascript).
+My version of Colt's Steele Score Keeper Project. Final project on DOM Manipulation. Cohesively merging all topics learned on (HTML, CSS and Javascript).
 
 ### Screenshot
 
