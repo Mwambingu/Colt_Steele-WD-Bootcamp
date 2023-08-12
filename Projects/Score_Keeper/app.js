@@ -5,61 +5,27 @@ const select = document.querySelector("#score-choice");
 const scorep1 = document.querySelector(".scorep1");
 const scorep2 = document.querySelector(".scorep2");
 
-playerOneBtn.addEventListener("click", () => {
-    playerOneBtn.style.fontSize = "1.4em";
+function buttonFeedback(
+    buttonEl,
+    scoreEl,
+    selectedValue,
+    btnColor,
+    shadowColor,
+    player_name
+) {
+    buttonEl.style.fontSize = "1.4em";
     setTimeout(() => {
-        playerOneBtn.style.fontSize = "1.2em";
+        buttonEl.style.fontSize = "1.2em";
     }, 150);
-    let value = Number(scorep1.innerText);
+    let value = Number(scoreEl.innerText);
     value += 1;
-    scorep1.innerText = value;
-    scorep1.style.color = "#ff7d00";
-    if (Number(value) === Number(select.value)) {
-        createWinCard("var(--super-orange)", "#944903", "Player One Wins!!");
-        playerOneBtn.setAttribute("disabled", "disabled");
-        playerTwoBtn.setAttribute("disabled", "disabled");
+    scoreEl.innerText = value;
+    scoreEl.style.color = btnColor;
+    if (Number(value) === Number(selectedValue)) {
+        createWinCard(btnColor, shadowColor, player_name);
+        setButtonDisable([playerOneBtn, playerTwoBtn]);
     }
-});
-
-playerTwoBtn.addEventListener("click", () => {
-    playerTwoBtn.style.fontSize = "1.4em";
-    setTimeout(() => {
-        playerTwoBtn.style.fontSize = "1.2em";
-    }, 50);
-    let value = Number(scorep2.innerText);
-    value += 1;
-    scorep2.innerText = value;
-    scorep2.style.color = "#78290f";
-    if (Number(value) === Number(select.value)) {
-        createWinCard("var(--maroon)", "#361206", "Player Two Wins!!");
-        playerOneBtn.setAttribute("disabled", "disabled");
-        playerTwoBtn.setAttribute("disabled", "disabled");
-    }
-});
-
-resetBtn.addEventListener("click", () => {
-    resetBtn.style.fontSize = "1.4em";
-    setTimeout(() => {
-        resetBtn.style.fontSize = "1.2em";
-    }, 150);
-    buttons = [scorep1, scorep2];
-    for (let btn of buttons) {
-        btn.innerText = 0;
-        btn.style.color = "#001524";
-    }
-    select.removeAttribute("disabled");
-    select.value = "selected";
-    const container2 = document.querySelector(".container2");
-    container2.remove();
-});
-
-select.addEventListener("change", () => {
-    if (select.value !== "selected") {
-        select.setAttribute("disabled", "disabled");
-        playerOneBtn.removeAttribute("disabled");
-        playerTwoBtn.removeAttribute("disabled");
-    }
-});
+}
 
 function createWinCard(color, shadowColor, player_name) {
     const container = document.querySelector(".container");
@@ -83,3 +49,61 @@ function createWinCard(color, shadowColor, player_name) {
     container2.setAttribute("display", "flex");
     container.insertAdjacentElement("afterend", container2);
 }
+
+function setButtonDisable(buttonList) {
+    for (let playerBtn of buttonList) {
+        playerBtn.setAttribute("disabled", "disabled");
+    }
+}
+
+function setButtonEnable(buttonList) {
+    for (let playerBtn of buttonList) {
+        playerBtn.removeAttribute("disabled");
+    }
+}
+
+playerOneBtn.addEventListener("click", () => {
+    buttonFeedback(
+        playerOneBtn,
+        scorep1,
+        select.value,
+        "var(--super-orange)",
+        "#944903",
+        "Player One Wins!!"
+    );
+});
+
+playerTwoBtn.addEventListener("click", () => {
+    buttonFeedback(
+        playerTwoBtn,
+        scorep2,
+        select.value,
+        "var(--maroon)",
+        "#361206",
+        "Player Two Wins!!"
+    );
+});
+
+resetBtn.addEventListener("click", () => {
+    resetBtn.style.fontSize = "1.4em";
+    setTimeout(() => {
+        resetBtn.style.fontSize = "1.2em";
+    }, 150);
+    buttons = [scorep1, scorep2];
+    for (let btn of buttons) {
+        btn.innerText = 0;
+        btn.style.color = "#001524";
+    }
+    select.removeAttribute("disabled");
+    select.value = "selected";
+    setButtonDisable([playerOneBtn, playerTwoBtn, resetBtn]);
+    const container2 = document.querySelector(".container2");
+    container2.remove();
+});
+
+select.addEventListener("change", () => {
+    if (select.value !== "selected") {
+        select.setAttribute("disabled", "disabled");
+        setButtonEnable([playerOneBtn, playerTwoBtn, resetBtn]);
+    }
+});
