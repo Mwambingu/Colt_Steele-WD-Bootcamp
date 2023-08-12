@@ -14,7 +14,7 @@ My version of Colt's Steele Ping Pong Project. Final project on DOM Manipulation
 
 ### Screenshot
 
-![](./pingpongstart.png)
+![](./pingpongstart.jpg)
 
 ![](./pingpongend.jpg)
 
