@@ -43,7 +43,7 @@ function createWinCard(color, shadowColor, player_name) {
     playerNameSpan.style.color = color;
     playerNameSpan.style.textShadow = `1px 1px ${shadowColor}`;
 
-    container2.classList.add("container2");
+    container2.classList.add("container2", "container-card");
     container2.append(congratSpan);
     container2.append(playerNameSpan);
     container2.setAttribute("display", "flex");
