@@ -37,14 +37,16 @@ const createTodo = (localCount, value) => {
     todosWrapper.append(deleteBtn);
     deleteBtn.addEventListener("click", () => {
         animateBtn(deleteBtn);
-        deleteBtn.parentElement.remove();
-        const allTodos = document.querySelectorAll(".todos div");
-        rearrangeTodos(allTodos);
-        const todos = document.querySelector(".todos");
-        if (!todos.querySelector("div")) {
-            noTodo = createNoTodo();
-            count = 0;
-        }
+        setTimeout(() => {
+            deleteBtn.parentElement.remove();
+            const allTodos = document.querySelectorAll(".todos div");
+            rearrangeTodos(allTodos);
+            const todos = document.querySelector(".todos");
+            if (!todos.querySelector("div")) {
+                noTodo = createNoTodo();
+                count = 0;
+            }
+        }, 200);
     });
 
     return todosWrapper;
