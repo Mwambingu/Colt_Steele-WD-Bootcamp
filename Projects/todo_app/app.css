@@ -132,7 +132,7 @@ table {
 }
 :root {
     --dark-blue: #2b2d42;
-    --dark-blue-transparent: #2b2d4238;
+    --dark-blue-transparent: #2b2d4213;
     --light-blue: #8d99ae;
     --lighter-blue: #edf2f4;
     --light-red: #ef233c;
@@ -157,6 +157,12 @@ body {
     width: 500px;
     padding: 10px;
     background-color: var(--lighter-blue);
+    border: 0px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 #todo-form {
@@ -218,7 +224,7 @@ body {
 
 .todo-wrapper {
     margin: 10px 0;
-    padding: 10px;
+    padding: 10px 5px;
     display: flex;
     width: 450px;
     justify-content: space-evenly;
@@ -244,16 +250,22 @@ body {
     font-family: var(--primary-font);
     letter-spacing: 0.5px;
     line-height: 20px;
-    width: 300px;
+    width: 325px;
 }
 
 .todo-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 25px;
+    height: 25px;
     background-color: var(--light-blue);
     color: var(--lighter-blue);
     text-align: center;
     border-radius: 100%;
-    padding: 5px;
+    font-family: var(--primary-font);
+    font-size: 0.8em;
+    font-weight: 700;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     -ms-border-radius: 100%;
