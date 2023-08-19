@@ -1,29 +1,35 @@
-const playerOneBtn = document.querySelector(".player-one");
-const playerTwoBtn = document.querySelector(".player-two");
+const player1 = {
+    score: 0,
+    button: document.querySelector(".player-one"),
+    color: "var(--super-orange)",
+    shadowColor: "#944903",
+    scoreDisplay: document.querySelector(".scorep1"),
+    winCry: "Player One Wins!!",
+};
+
+const player2 = {
+    score: 0,
+    button: document.querySelector(".player-two"),
+    color: "",
+    shadowColor: "",
+    scoreDisplay: document.querySelector(".scorep2"),
+    winCry: "Player Two Wins!!",
+};
+
 const resetBtn = document.querySelector(".reset");
 const select = document.querySelector("#score-choice");
-const scorep1 = document.querySelector(".scorep1");
-const scorep2 = document.querySelector(".scorep2");
 
-function buttonFeedback(
-    buttonEl,
-    scoreEl,
-    selectedValue,
-    btnColor,
-    shadowColor,
-    player_name
-) {
-    buttonEl.style.fontSize = "1.4em";
+function initFeedback(player, opponent) {
+    player.button.style.fontSize = "1.4em";
     setTimeout(() => {
-        buttonEl.style.fontSize = "1.2em";
+        player.button.style.fontSize = "1.2em";
     }, 150);
-    let value = Number(scoreEl.innerText);
-    value += 1;
-    scoreEl.innerText = value;
-    scoreEl.style.color = btnColor;
-    if (Number(value) === Number(selectedValue)) {
-        createWinCard(btnColor, shadowColor, player_name);
-        setButtonDisable([playerOneBtn, playerTwoBtn]);
+    player.score += 1;
+    player.scoreDisplay.innerText = player.score;
+    player.scoreDisplay.style.color = player.color;
+    if (player.score === Number(select.value)) {
+        createWinCard(player.color, player.shadowColor, player.winCry);
+        setButtonDisable([player.button, opponent.button]);
     }
 }
 
@@ -62,26 +68,12 @@ function setButtonEnable(buttonList) {
     }
 }
 
-playerOneBtn.addEventListener("click", () => {
-    buttonFeedback(
-        playerOneBtn,
-        scorep1,
-        select.value,
-        "var(--super-orange)",
-        "#944903",
-        "Player One Wins!!"
-    );
+player1.button.addEventListener("click", function () {
+    initFeedback(player1, player2);
 });
 
-playerTwoBtn.addEventListener("click", () => {
-    buttonFeedback(
-        playerTwoBtn,
-        scorep2,
-        select.value,
-        "var(--maroon)",
-        "#361206",
-        "Player Two Wins!!"
-    );
+player2.button.addEventListener("click", function () {
+    initFeedback(player2, player1);
 });
 
 resetBtn.addEventListener("click", () => {
@@ -89,14 +81,16 @@ resetBtn.addEventListener("click", () => {
     setTimeout(() => {
         resetBtn.style.fontSize = "1.2em";
     }, 150);
-    buttons = [scorep1, scorep2];
-    for (let btn of buttons) {
-        btn.innerText = 0;
-        btn.style.color = "#001524";
+    buttonsDisplay = [player1.scoreDisplay, player2.scoreDisplay];
+    for (let display of buttonsDisplay) {
+        display.innerText = 0;
+        display.style.color = "var(--dark)";
     }
+    player1.score = 0;
+    player2.score = 0;
     select.removeAttribute("disabled");
     select.value = "selected";
-    setButtonDisable([playerOneBtn, playerTwoBtn, resetBtn]);
+    setButtonDisable([player1.button, player2.button, resetBtn]);
     const container2 = document.querySelector(".container2");
     container2.remove();
 });
@@ -104,6 +98,6 @@ resetBtn.addEventListener("click", () => {
 select.addEventListener("change", () => {
     if (select.value !== "selected") {
         select.setAttribute("disabled", "disabled");
-        setButtonEnable([playerOneBtn, playerTwoBtn, resetBtn]);
+        setButtonEnable([player1.button, player2.button, resetBtn]);
     }
 });
