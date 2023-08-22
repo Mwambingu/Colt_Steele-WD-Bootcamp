@@ -85,3 +85,61 @@ fakeRequestPromise("yelp.com/api/coffee/page1")
     .catch((err) => {
         console.log(err);
     });
+
+// creating promises
+const fakeRequestTwo = (url) => {
+    return new Promise((resolve, reject) => {
+        const rand = Math.floor(Math.random() * 10 + 1);
+        setTimeout(() => {
+            if (rand > 5) {
+                resolve(url);
+            } else {
+                reject();
+            }
+        }, 1000);
+    });
+};
+
+fakeRequestTwo("www.faker.com/page1")
+    .then((response) => {
+        console.log(response);
+        console.log("fake people everywhere!!");
+    })
+    .catch((err) => {
+        console.log("Didn't find a single fake thing");
+    });
+
+const delayedColorChange = (color, delay) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (color) {
+                document.body.style.backgroundColor = color;
+                resolve(`The background color is set to ${color}`);
+            } else {
+                console.log("No color was added");
+                reject();
+            }
+        }, delay);
+    });
+};
+
+delayedColorChange("red", 1000)
+    .then((response) => {
+        console.log(response);
+        return delayedColorChange("orange", 1000);
+    })
+    .then((response) => {
+        console.log(response);
+        return delayedColorChange("yellow", 1000);
+    })
+    .then((response) => {
+        console.log(response);
+        return delayedColorChange("green", 1000);
+    })
+    .then((response) => {
+        console.log(response);
+        return delayedColorChange("", 1000);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
