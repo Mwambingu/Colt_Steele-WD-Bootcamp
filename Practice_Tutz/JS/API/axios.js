@@ -38,7 +38,12 @@ button.addEventListener("click", () => {
         joke = await getJoke();
         const jokeP = document.createElement("p");
         jokeP.innerText = joke;
-        jokeP.classList.add("is-italic", "is-size-5", "has-text-centered");
+        jokeP.classList.add(
+            "is-italic",
+            "is-size-5",
+            "has-text-centered",
+            "p-3"
+        );
         jokeContainer.appendChild(jokeP);
     };
 
