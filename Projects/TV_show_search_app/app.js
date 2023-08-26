@@ -95,15 +95,16 @@ techSelect.addEventListener("change", async () => {
         }
 
         const movies = await getData();
+        console.log(movies);
 
         for (let movie of movies) {
             moviesContainer.append(
                 createCard(
-                    movie.name,
-                    movie.img,
-                    movie.status,
-                    movie.startDate,
-                    movie.genres
+                    movie.show.name, //name
+                    movie.show.image.medium, //img
+                    movie.show.status, //status
+                    movie.show.premiered, //startDate
+                    movie.show.genres //genres
                 )
             );
         }
