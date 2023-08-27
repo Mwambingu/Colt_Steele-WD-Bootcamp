@@ -1,5 +1,5 @@
 const searchContainer = document.querySelector("#search-container");
-const moviesSection = document.querySelector(".section");
+const moviesSection = document.querySelector("#moviesSection");
 const moviesContainer = document.querySelector(".section div");
 const techSelect = document.querySelector("#api-tech");
 
@@ -19,7 +19,7 @@ const createCard = (movieName, imgLink, status, startDate, genres) => {
     const dateDiv = document.createElement("div");
     const genresDiv = document.createElement("div");
 
-    column.classList.add("column", "is-4");
+    column.classList.add("column", "is-2");
 
     cardContent.append(statusDiv);
     cardContent.append(dateDiv);
@@ -37,7 +37,7 @@ const createCard = (movieName, imgLink, status, startDate, genres) => {
     cardHeaderTitle.classList.add("card-header-title");
     cardHeaderTitle.innerText = `${movieName}`;
 
-    cardContent.classList.add("card-content");
+    cardContent.classList.add("card-content", "p-0", "pt-1");
     for (x of [statusDiv, dateDiv, genresDiv]) {
         x.classList.add("mb-2");
     }
@@ -63,22 +63,33 @@ const createCard = (movieName, imgLink, status, startDate, genres) => {
 };
 
 const getData = async () => {
-    const res = await fetch("https://api.tvmaze.com/search/shows?q=girls");
+    // const res = await fetch("https://api.tvmaze.com/search/shows?q=john");
+    const res = await fetch("https://api.tvmaze.com/shows?page=1");
     const data = await res.json();
+    // let data = [];
+    // for (let i = 0; i < 30; i++) {
+    //     data.push(dataset[i]);
+    // }
+    // console.log(data);
 
     // for (let x of data) {
     //     console.log(x);
     // }
 
-    // const movie = {};
-    // movie.name = data[0].show.name;
-    // movie.genres = data[0].show.genres;
-    // movie.img = data[0].show.image.medium;
-    // movie.status = data[0].show.status;
-    // movie.startDate = data[0].show.premiered;
+    // const movieData = {};
+    // movieData.name = data[0].name;
+    // movieData.genres = data[0].genres;
+    // movieData.img = data[0].image.medium;
+    // movieData.status = data[0].status;
+    // movieData.startDate = data[0].premiered;
+
+    // console.log(movieData);
 
     return data;
 };
+
+let count = 0;
+let divCount = 0;
 
 techSelect.addEventListener("change", async () => {
     if (techSelect.value !== "") {
@@ -98,15 +109,45 @@ techSelect.addEventListener("change", async () => {
         console.log(movies);
 
         for (let movie of movies) {
-            moviesContainer.append(
-                createCard(
-                    movie.show.name, //name
-                    movie.show.image.medium, //img
-                    movie.show.status, //status
-                    movie.show.premiered, //startDate
-                    movie.show.genres //genres
-                )
-            );
+            count += 1;
+            if (count === 7) {
+                let newMovieContainer = document.createElement("div");
+                divCount += 1;
+                newMovieContainer.id = `movieDiv${divCount}`;
+                newMovieContainer.classList.add("columns");
+                moviesSection.append(newMovieContainer);
+            }
+            if (count < 7) {
+                moviesContainer.append(
+                    createCard(
+                        movie.name, //name
+                        movie.image.medium, //img
+                        movie.status, //status
+                        movie.premiered, //startDate
+                        movie.genres //genres
+                    )
+                );
+            }
+            if (count >= 7 && count <= 12) {
+                let divStr = `#movieDiv${divCount}`;
+                console.log(divStr);
+                newMovieContainer = document.querySelector(
+                    `#movieDiv${divCount}`
+                );
+                newMovieContainer.append(
+                    createCard(
+                        movie.name, //name
+                        movie.image.medium, //img
+                        movie.status, //status
+                        movie.premiered, //startDate
+                        movie.genres //genres
+                    )
+                );
+            }
+            if (count > 12) {
+                count = 6;
+            }
+            console.log(count);
         }
     }
     if (techSelect.value === "selected") {
