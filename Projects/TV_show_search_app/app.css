@@ -5,3 +5,16 @@
 #search-input {
     width: 500px;
 }
+
+.card {
+    border-color: white;
+    transition: border 0.25s ease-in;
+    -webkit-transition: border 0.25s ease-in;
+    -moz-transition: border 0.25s ease-in;
+    -ms-transition: border 0.25s ease-in;
+    -o-transition: border 0.25s ease-in;
+}
+
+.card:hover {
+    border: 1px solid lightskyblue;
+}

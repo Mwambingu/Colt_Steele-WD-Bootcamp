@@ -11,7 +11,11 @@
     />
     <link rel="stylesheet" href="app.css" />
     <body>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav
+            class="navbar is-dark is-flex is-justify-content-space-between"
+            role="navigation"
+            aria-label="main navigation"
+        >
             <div class="navbar-brand">
                 <a
                     class="navbar-item is-size-4 has-text-weight-bold"
@@ -19,15 +23,29 @@
                 >
                     TV Show Search
                 </a>
-                <div class="navbar-item">
-                    <div class="select">
-                        <select id="api-tech">
-                            <option value="selected">Choose API Tech</option>
-                            <option value="xhr">XHR</option>
-                            <option value="fetch-api">Fetch API</option>
-                            <option value="axios">AXIOS</option>
-                        </select>
-                    </div>
+            </div>
+            <div class="navbar-item">
+                <div class="select">
+                    <select id="api-tech">
+                        <option value="selected">Choose API Tech</option>
+                        <option value="xhr">XHR</option>
+                        <option value="fetch-api">Fetch API</option>
+                        <option value="axios">AXIOS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <button id="get-all-movies-btn" class="button is-success mr-3">
+                    Get All Movies
+                </button>
+                <div class="select">
+                    <select id="page-number">
+                        <option value="selected">Select Page Number</option>
+                        <option value="1">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                        <option value="4">4</option>
+                    </select>
                 </div>
             </div>
         </nav>
@@ -41,7 +59,7 @@
                         class="input mr-5"
                     />
                 </div>
-                <button class="button is-primary">Search</button>
+                <button class="button is-primary mr-2">Search</button>
             </div>
         </main>
         <section id="moviesSection" class="section hide">

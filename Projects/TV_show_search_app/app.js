@@ -2,6 +2,7 @@ const searchContainer = document.querySelector("#search-container");
 const moviesSection = document.querySelector("#moviesSection");
 const moviesContainer = document.querySelector(".section div");
 const techSelect = document.querySelector("#api-tech");
+const getAllMoviesBtn = document.querySelector("#get-all-movies-btn");
 
 const imgLink =
     "https://images.unsplash.com/photo-1686256282146-46dd71827a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
@@ -37,9 +38,9 @@ const createCard = (movieName, imgLink, status, startDate, genres) => {
     cardHeaderTitle.classList.add("card-header-title");
     cardHeaderTitle.innerText = `${movieName}`;
 
-    cardContent.classList.add("card-content", "p-0", "pt-1");
+    cardContent.classList.add("card-content", "hide");
     for (x of [statusDiv, dateDiv, genresDiv]) {
-        x.classList.add("mb-2");
+        x.classList.add("mb-1");
     }
 
     statusDiv.innerHTML = `<span class="has-text-weight-bold">Status:<span> <span class="has-text-weight-light">${status}</span>`;
@@ -57,6 +58,7 @@ const createCard = (movieName, imgLink, status, startDate, genres) => {
     card.append(cardImg);
     card.append(cardHeader);
     card.append(cardContent);
+    card.classList.add("card");
     column.append(card);
 
     return column;
