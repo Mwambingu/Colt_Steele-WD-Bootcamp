@@ -1,13 +1,22 @@
 const searchContainer = document.querySelector("#search-container");
 const searchForm = document.querySelector("#search-form");
 const moviesSection = document.querySelector("#moviesSection");
-const moviesContainer = document.querySelector(".section div");
 const techSelect = document.querySelector("#api-tech");
 const getAllMoviesBtn = document.querySelector("#get-all-movies-btn");
 const pageNumber = document.querySelector("#page-number");
 
 const imgLink =
     "https://images.unsplash.com/photo-1686256282146-46dd71827a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
+
+const createMoviesContainer = () => {
+    const container = document.createElement("div");
+    container.id = "movieContainer";
+    container.classList.add("columns");
+    console.log(moviesSection);
+    console.log(container);
+    moviesSection.append(container);
+    return container;
+};
 
 const createCard = (movieName, imgLink, status, startDate, genres) => {
     const column = document.createElement("div");
@@ -90,6 +99,7 @@ const getData = async (dataType, searchQuery, pageNumber) => {
 };
 
 const addDataToPage = (data) => {
+    const moviesContainer = createMoviesContainer();
     for (let movie of data) {
         count += 1;
         if (count === 7) {
@@ -146,19 +156,33 @@ techSelect.addEventListener("change", async () => {
         if (techSelect.value === "fetch-api") {
             console.log(techSelect.value);
         }
-
-        const movies = await getData("getAll", null, 3);
-        console.log(movies);
-        addDataToPage(movies);
     }
     if (techSelect.value === "selected") {
         searchContainer.classList.add("hide");
-        movieSection.classList.add("hide");
+        moviesSection.classList.add("hide");
     }
 });
 
 searchForm.addEventListener("submit", async (evt) => {
     evt.preventDefault();
-    moviesSection.classList.remove("hide");
     console.log("Search is searching!!");
+});
+
+getAllMoviesBtn.addEventListener("click", async (evt) => {
+    if (document.querySelector("#moviesSection").querySelectorAll("div")) {
+        for (let div of document
+            .querySelector("#moviesSection")
+            .querySelectorAll("div")) {
+            div.remove();
+        }
+    }
+
+    if (pageNumber.value === "selected") {
+        alert("Error!! No page has been selected");
+    } else {
+        moviesSection.classList.remove("hide");
+        const movies = await getData("getAll", null, pageNumber.value);
+        console.log(movies);
+        addDataToPage(movies);
+    }
 });
