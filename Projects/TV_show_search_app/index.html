@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="app.css" />
     <body>
         <nav
-            class="navbar is-dark is-flex is-justify-content-space-between"
+            class="navbar is-fixed-top is-dark is-flex is-justify-content-space-between"
             role="navigation"
             aria-label="main navigation"
         >
@@ -35,7 +35,10 @@
                 </div>
             </div>
             <div class="navbar-item">
-                <button id="get-all-movies-btn" class="button is-success mr-3">
+                <button
+                    id="get-all-movies-btn"
+                    class="button is-info is-outlined mr-3"
+                >
                     Get All Movies
                 </button>
                 <div class="select">
@@ -49,8 +52,8 @@
                 </div>
             </div>
         </nav>
-        <main id="search-container" class="container is-fluid hide mt-5">
-            <div class="is-flex is-justify-content-center">
+        <main id="search-container" class="hero is-fluid hide">
+            <div class="hero-body is-flex is-justify-content-center">
                 <div>
                     <input
                         type="text"
