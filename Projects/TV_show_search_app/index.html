@@ -37,7 +37,7 @@
             <div class="navbar-item">
                 <button
                     id="get-all-movies-btn"
-                    class="button is-info is-outlined mr-3"
+                    class="button is-primary is-outlined mr-3"
                 >
                     Get All Movies
                 </button>
@@ -53,17 +53,19 @@
             </div>
         </nav>
         <main id="search-container" class="hero is-fluid hide">
-            <div class="hero-body is-flex is-justify-content-center">
-                <div>
-                    <input
-                        type="text"
-                        name=""
-                        id="search-input"
-                        class="input mr-5"
-                    />
+            <form id="search-form" action="#">
+                <div class="hero-body is-flex is-justify-content-center">
+                    <div>
+                        <input
+                            type="text"
+                            name=""
+                            id="search-input"
+                            class="input mr-5"
+                        />
+                    </div>
+                    <button class="button is-primary mr-2">Search</button>
                 </div>
-                <button class="button is-primary mr-2">Search</button>
-            </div>
+            </form>
         </main>
         <section id="moviesSection" class="section hide">
             <div class="columns"></div>

@@ -2,19 +2,35 @@
     display: none;
 }
 
+html {
+    height: 100vh;
+}
+
+body {
+    /* background-image: url("https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+    background-repeat: repeat;
+    background-size: 100%;
+    min-height: 100vh; */
+    background: radial-gradient(
+        circle at 24.1% 68.8%,
+        rgb(50, 50, 50) 0%,
+        rgb(0, 0, 0) 99.4%
+    );
+}
+
 #search-input {
     width: 500px;
 }
 
 .card {
-    border-color: white;
-    transition: border 0.25s ease-in;
-    -webkit-transition: border 0.25s ease-in;
-    -moz-transition: border 0.25s ease-in;
-    -ms-transition: border 0.25s ease-in;
-    -o-transition: border 0.25s ease-in;
+    border: none;
+    transition: border 0.25s ease-in-out;
+    -webkit-transition: border 0.25s ease-in-out;
+    -moz-transition: border 0.25s ease-in-out;
+    -ms-transition: border 0.25s ease-in-out;
+    -o-transition: border 0.25s ease-in-out;
 }
 
 .card:hover {
-    border: 1px solid lightskyblue;
+    border: 2px solid hsl(171, 100%, 41%);
 }
