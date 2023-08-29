@@ -88,20 +88,18 @@ const createMovieCard = (movieName, imgLink, status, startDate, genres) => {
 
 const getData = async (dataType, searchQuery, pageNumber) => {
     console.log(dataType, searchQuery, pageNumber);
+    let fetchUrl = "";
     try {
         if (dataType === "search") {
-            const res = await fetch(
-                `https://api.tvmaze.com/search/people?q=${searchQuery}`
-            );
+            fetchUrl = `https://api.tvmaze.com/search/shows?q=${searchQuery}`;
+            const res = await fetch(fetchUrl);
             const data = await res.json();
             return data;
         }
         if (dataType === "getAll") {
-            const fetchUrl = `https://api.tvmaze.com/shows?page=${pageNumber}`;
-            console.log(fetchUrl);
+            fetchUrl = `https://api.tvmaze.com/shows?page=${pageNumber}`;
             const res = await fetch(fetchUrl);
             const data = await res.json();
-
             return data;
         }
     } catch (err) {
@@ -109,10 +107,11 @@ const getData = async (dataType, searchQuery, pageNumber) => {
     }
 };
 
-const addDataToPage = (data) => {
+const addDataToPage = (data, dataType) => {
     try {
         const moviesContainer = createMoviesContainer();
         for (let movie of data) {
+            console.log(movie);
             count += 1;
             if (count === 7) {
                 let newMovieContainer = document.createElement("div");
@@ -122,28 +121,63 @@ const addDataToPage = (data) => {
                 moviesSection.append(newMovieContainer);
             }
             if (count < 7) {
-                moviesContainer.append(
-                    createMovieCard(
-                        movie.name, //name
-                        movie.image.medium, //img
-                        movie.status, //status
-                        movie.premiered, //startDate
-                        movie.genres //genres
-                    )
-                );
+                let imgLink =
+                    "https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg";
+                if (movie.show.image) {
+                    imgLink = movie.show.image.medium;
+                }
+                console.log(imgLink, movie.image);
+                if (dataType === "getAll") {
+                    moviesContainer.append(
+                        createMovieCard(
+                            movie.name, //name
+                            movie.image.medium, //img
+                            movie.status, //status
+                            movie.premiered, //startDate
+                            movie.genres //genres
+                        )
+                    );
+                } else {
+                    moviesContainer.append(
+                        createMovieCard(
+                            movie.show.name, //name
+                            imgLink, //img
+                            movie.show.status, //status
+                            movie.show.premiered, //startDate
+                            movie.show.genres //genres
+                        )
+                    );
+                }
             }
             if (count >= 7 && count <= 12) {
+                let imgLink =
+                    "https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg";
+                if (movie.show.image) {
+                    imgLink = movie.show.image.medium;
+                }
                 let divStr = `#movieDiv${divCount}`;
                 let newMovieContainer = document.querySelector(`${divStr}`);
-                newMovieContainer.append(
-                    createMovieCard(
-                        movie.name, //name
-                        movie.image.medium, //img
-                        movie.status, //status
-                        movie.premiered, //startDate
-                        movie.genres //genres
-                    )
-                );
+                if (dataType === "getAll") {
+                    newMovieContainer.append(
+                        createMovieCard(
+                            movie.name, //name
+                            movie.image.medium, //img
+                            movie.status, //status
+                            movie.premiered, //startDate
+                            movie.genres //genres
+                        )
+                    );
+                } else {
+                    newMovieContainer.append(
+                        createMovieCard(
+                            movie.show.name, //name
+                            imgLink, //img
+                            movie.show.status, //status
+                            movie.show.premiered, //startDate
+                            movie.show.genres //genres
+                        )
+                    );
+                }
             }
             if (count > 12) {
                 count = 6;
@@ -187,7 +221,12 @@ techSelect.addEventListener("change", async () => {
 
 searchForm.addEventListener("submit", async (evt) => {
     evt.preventDefault();
-    console.log(s);
+    if (search.value !== "") {
+        removeMovies();
+        moviesSection.classList.remove("hide");
+        const movies = await getData("search", search.value, null);
+        addDataToPage(movies);
+    }
 });
 
 getAllMoviesBtn.addEventListener("click", async (evt) => {
@@ -198,6 +237,6 @@ getAllMoviesBtn.addEventListener("click", async (evt) => {
     } else {
         moviesSection.classList.remove("hide");
         const movies = await getData("getAll", null, pageNumber.value);
-        addDataToPage(movies);
+        addDataToPage(movies, "getAll");
     }
 });
