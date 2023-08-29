@@ -5,8 +5,8 @@ const techSelect = document.querySelector("#api-tech");
 const getAllMoviesBtn = document.querySelector("#get-all-movies-btn");
 const pageNumber = document.querySelector("#page-number");
 
-const imgLink =
-    "https://images.unsplash.com/photo-1686256282146-46dd71827a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
+let count = 0;
+let divCount = 0;
 
 const createMoviesContainer = () => {
     const container = document.createElement("div");
@@ -18,7 +18,7 @@ const createMoviesContainer = () => {
     return container;
 };
 
-const createCard = (movieName, imgLink, status, startDate, genres) => {
+const createMovieCard = (movieName, imgLink, status, startDate, genres) => {
     const column = document.createElement("div");
     const card = document.createElement("div");
     const cardImg = document.createElement("div");
@@ -45,7 +45,7 @@ const createCard = (movieName, imgLink, status, startDate, genres) => {
     figure.classList.add("image", "is-2by3");
     img.src = `${imgLink}`;
 
-    cardHeader.classList.add("card-header");
+    cardHeader.classList.add("card-header", "hide");
     cardHeaderTitle.classList.add("card-header-title");
     cardHeaderTitle.innerText = `${movieName}`;
 
@@ -99,52 +99,61 @@ const getData = async (dataType, searchQuery, pageNumber) => {
 };
 
 const addDataToPage = (data) => {
-    const moviesContainer = createMoviesContainer();
-    for (let movie of data) {
-        count += 1;
-        if (count === 7) {
-            let newMovieContainer = document.createElement("div");
-            divCount += 1;
-            newMovieContainer.id = `movieDiv${divCount}`;
-            newMovieContainer.classList.add("columns");
-            moviesSection.append(newMovieContainer);
+    try {
+        const moviesContainer = createMoviesContainer();
+        for (let movie of data) {
+            count += 1;
+            if (count === 7) {
+                let newMovieContainer = document.createElement("div");
+                divCount += 1;
+                newMovieContainer.id = `movieDiv${divCount}`;
+                newMovieContainer.classList.add("columns");
+                moviesSection.append(newMovieContainer);
+            }
+            if (count < 7) {
+                moviesContainer.append(
+                    createMovieCard(
+                        movie.name, //name
+                        movie.image.medium, //img
+                        movie.status, //status
+                        movie.premiered, //startDate
+                        movie.genres //genres
+                    )
+                );
+            }
+            if (count >= 7 && count <= 12) {
+                let divStr = `#movieDiv${divCount}`;
+                let newMovieContainer = document.querySelector(`${divStr}`);
+                newMovieContainer.append(
+                    createMovieCard(
+                        movie.name, //name
+                        movie.image.medium, //img
+                        movie.status, //status
+                        movie.premiered, //startDate
+                        movie.genres //genres
+                    )
+                );
+            }
+            if (count > 12) {
+                count = 6;
+            }
         }
-        if (count < 7) {
-            moviesContainer.append(
-                createCard(
-                    movie.name, //name
-                    movie.image.medium, //img
-                    movie.status, //status
-                    movie.premiered, //startDate
-                    movie.genres //genres
-                )
-            );
-        }
-        if (count >= 7 && count <= 12) {
-            let divStr = `#movieDiv${divCount}`;
-            console.log(divStr);
-            let newMovieContainer = document.querySelector(
-                `#movieDiv${divCount}`
-            );
-            newMovieContainer.append(
-                createCard(
-                    movie.name, //name
-                    movie.image.medium, //img
-                    movie.status, //status
-                    movie.premiered, //startDate
-                    movie.genres //genres
-                )
-            );
-        }
-        if (count > 12) {
-            count = 6;
-        }
-        console.log(count);
+    } catch (err) {
+        console.log(err);
     }
 };
 
-let count = 0;
-let divCount = 0;
+const removeMovies = () => {
+    if (document.querySelector("#moviesSection").querySelectorAll("div")) {
+        for (let div of document
+            .querySelector("#moviesSection")
+            .querySelectorAll("div")) {
+            div.remove();
+            divCount = 0;
+            count = 0;
+        }
+    }
+};
 
 techSelect.addEventListener("change", async () => {
     if (techSelect.value !== "") {
@@ -171,22 +180,13 @@ searchForm.addEventListener("submit", async (evt) => {
 });
 
 getAllMoviesBtn.addEventListener("click", async (evt) => {
-    if (document.querySelector("#moviesSection").querySelectorAll("div")) {
-        for (let div of document
-            .querySelector("#moviesSection")
-            .querySelectorAll("div")) {
-            div.remove();
-            divCount = 0;
-            count = 0;
-        }
-    }
+    removeMovies();
 
     if (pageNumber.value === "selected") {
         alert("Error!! No page has been selected");
     } else {
         moviesSection.classList.remove("hide");
         const movies = await getData("getAll", null, pageNumber.value);
-        console.log(movies);
         addDataToPage(movies);
     }
 });
