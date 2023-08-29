@@ -34,3 +34,22 @@ body {
 .card:hover {
     border: 2px solid hsl(171, 100%, 41%);
 }
+
+.shimmer-effect {
+    color: grey;
+    display: inline-block;
+    /*addinggradients*/
+    -webkit-mask: linear-gradient(120deg, #000 25%, #0005, #000 75%) right/250%
+        100%;
+    /*shimmereffectanimation*/
+    animation: shimmer 2.5s infinite;
+    background-repeat: no-repeat;
+    width: 500px;
+    -webkit-animation: shimmer 2.5s;
+}
+@keyframes shimmer {
+    100% {
+        /* setting up mask position at left side */
+        -webkit-mask-position: left;
+    }
+}

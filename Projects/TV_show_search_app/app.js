@@ -1,5 +1,6 @@
 const searchContainer = document.querySelector("#search-container");
 const searchForm = document.querySelector("#search-form");
+const search = document.querySelector("#search-input");
 const moviesSection = document.querySelector("#moviesSection");
 const techSelect = document.querySelector("#api-tech");
 const getAllMoviesBtn = document.querySelector("#get-all-movies-btn");
@@ -65,6 +66,16 @@ const createMovieCard = (movieName, imgLink, status, startDate, genres) => {
     } else {
         genresDiv.innerHTML += ` <span class="tag is-primary">${genres}<span>`;
     }
+
+    card.addEventListener("mouseenter", () => {
+        const cardImg = card.querySelector("img");
+        cardImg.classList.add("shimmer-effect");
+    });
+
+    card.addEventListener("mouseleave", () => {
+        const cardImg = card.querySelector("img");
+        cardImg.classList.remove("shimmer-effect");
+    });
 
     card.append(cardImg);
     card.append(cardHeader);
@@ -176,7 +187,7 @@ techSelect.addEventListener("change", async () => {
 
 searchForm.addEventListener("submit", async (evt) => {
     evt.preventDefault();
-    console.log("Search is searching!!");
+    console.log(s);
 });
 
 getAllMoviesBtn.addEventListener("click", async (evt) => {
