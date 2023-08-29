@@ -123,7 +123,9 @@ const addDataToPage = (data) => {
         if (count >= 7 && count <= 12) {
             let divStr = `#movieDiv${divCount}`;
             console.log(divStr);
-            newMovieContainer = document.querySelector(`#movieDiv${divCount}`);
+            let newMovieContainer = document.querySelector(
+                `#movieDiv${divCount}`
+            );
             newMovieContainer.append(
                 createCard(
                     movie.name, //name
@@ -174,6 +176,8 @@ getAllMoviesBtn.addEventListener("click", async (evt) => {
             .querySelector("#moviesSection")
             .querySelectorAll("div")) {
             div.remove();
+            divCount = 0;
+            count = 0;
         }
     }
 
