@@ -121,12 +121,6 @@ const addDataToPage = (data, dataType) => {
                 moviesSection.append(newMovieContainer);
             }
             if (count < 7) {
-                let imgLink =
-                    "https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg";
-                if (movie.show.image) {
-                    imgLink = movie.show.image.medium;
-                }
-                console.log(imgLink, movie.image);
                 if (dataType === "getAll") {
                     moviesContainer.append(
                         createMovieCard(
@@ -138,6 +132,11 @@ const addDataToPage = (data, dataType) => {
                         )
                     );
                 } else {
+                    let imgLink =
+                        "https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg";
+                    if (movie.show.image) {
+                        imgLink = movie.show.image.medium;
+                    }
                     moviesContainer.append(
                         createMovieCard(
                             movie.show.name, //name
@@ -150,11 +149,6 @@ const addDataToPage = (data, dataType) => {
                 }
             }
             if (count >= 7 && count <= 12) {
-                let imgLink =
-                    "https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg";
-                if (movie.show.image) {
-                    imgLink = movie.show.image.medium;
-                }
                 let divStr = `#movieDiv${divCount}`;
                 let newMovieContainer = document.querySelector(`${divStr}`);
                 if (dataType === "getAll") {
@@ -168,6 +162,11 @@ const addDataToPage = (data, dataType) => {
                         )
                     );
                 } else {
+                    let imgLink =
+                        "https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg";
+                    if (movie.show.image) {
+                        imgLink = movie.show.image.medium;
+                    }
                     newMovieContainer.append(
                         createMovieCard(
                             movie.show.name, //name
