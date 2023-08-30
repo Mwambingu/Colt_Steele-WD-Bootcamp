@@ -252,16 +252,18 @@ searchForm.addEventListener("submit", async (evt) => {
 
 getAllMoviesBtn.addEventListener("click", async (evt) => {
     removeMovies();
+    console.log("Clicked!!");
 
     if (pageNumber.value === "selected") {
         alert("Error!! No page has been selected");
     } else {
         moviesSection.classList.remove("hide");
+        console.log(techSelect.value);
         if (techSelect.value === "axios") {
             const movies = await getDataAxios("getAll", null, pageNumber.value);
             addDataToPage(movies, "getAll");
         }
-        if (techSelect.value === "fetch") {
+        if (techSelect.value === "fetch-api") {
             const movies = await getDataFetch("getAll", null, pageNumber.value);
             addDataToPage(movies, "getAll");
         }
