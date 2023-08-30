@@ -14,27 +14,27 @@ Created a TV Search Movie app as a final project on Callbacks, Promises, API & A
 
 ### Screenshot of the App
 
-# App start
+### App start
 
 ![](./tv_show1.jpg)
 
-# Choosing API Tech
+### Choosing API Tech
 
 ![](./tv_show2.jpg)
 
-# Search Box and Get All Movies function now available
+### Search Box and Get All Movies function now available
 
 ![](./tv_show3.jpg)
 
-# Using Get All Movies
+### Using Get All Movies
 
 ![](./tv_show4.jpg)
 
-# All Page 3 Movies Fetched
+### All Page 3 Movies Fetched
 
 ![](./tv_show5.jpg)
 
-# Using the Search function
+### Using the Search function
 
 ![](./tv_show6.jpg)
 
