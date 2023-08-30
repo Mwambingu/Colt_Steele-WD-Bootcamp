@@ -86,7 +86,25 @@ const createMovieCard = (movieName, imgLink, status, startDate, genres) => {
     return column;
 };
 
-const getData = async (dataType, searchQuery, pageNumber) => {
+const getDataAxios = async (dataType, searchQuery, pageNumber) => {
+    let fetchUrl = "";
+    try {
+        if (dataType === "search") {
+            fetchUrl = `https://api.tvmaze.com/search/shows?q=${searchQuery}`;
+            const res = await axios.get(fetchUrl);
+            return res.data;
+        }
+        if (dataType === "getAll") {
+            fetchUrl = `https://api.tvmaze.com/shows?page=${pageNumber}`;
+            const res = await axios.get(fetchUrl);
+            return res.data;
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+const getDataFetch = async (dataType, searchQuery, pageNumber) => {
     console.log(dataType, searchQuery, pageNumber);
     let fetchUrl = "";
     try {
@@ -202,19 +220,14 @@ const removeMovies = () => {
 techSelect.addEventListener("change", async () => {
     if (techSelect.value !== "") {
         searchContainer.classList.remove("hide");
-        if (techSelect.value === "xhr") {
-            console.log(techSelect.value);
-        }
-        if (techSelect.value === "axios") {
-            console.log(techSelect.value);
-        }
-        if (techSelect.value === "fetch-api") {
-            console.log(techSelect.value);
-        }
+        pageNumber.removeAttribute("disabled");
+        getAllMoviesBtn.removeAttribute("disabled");
     }
     if (techSelect.value === "selected") {
         searchContainer.classList.add("hide");
         moviesSection.classList.add("hide");
+        pageNumber.setAttribute("disabled", true);
+        getAllMoviesBtn.setAttribute("disabled", true);
     }
 });
 
@@ -222,9 +235,18 @@ searchForm.addEventListener("submit", async (evt) => {
     evt.preventDefault();
     if (search.value !== "") {
         removeMovies();
+        let movies = null;
         moviesSection.classList.remove("hide");
-        const movies = await getData("search", search.value, null);
-        addDataToPage(movies);
+        if (techSelect.value === "axios") {
+            movies = await getDataAxios("search", search.value, null);
+        }
+
+        if (techSelect.value === "fetch-api") {
+            movies = await getDataFetch("search", search.value, null);
+        }
+        if (movies) {
+            addDataToPage(movies);
+        }
     }
 });
 
@@ -235,7 +257,13 @@ getAllMoviesBtn.addEventListener("click", async (evt) => {
         alert("Error!! No page has been selected");
     } else {
         moviesSection.classList.remove("hide");
-        const movies = await getData("getAll", null, pageNumber.value);
-        addDataToPage(movies, "getAll");
+        if (techSelect.value === "axios") {
+            const movies = await getDataAxios("getAll", null, pageNumber.value);
+            addDataToPage(movies, "getAll");
+        }
+        if (techSelect.value === "fetch") {
+            const movies = await getDataFetch("getAll", null, pageNumber.value);
+            addDataToPage(movies, "getAll");
+        }
     }
 });

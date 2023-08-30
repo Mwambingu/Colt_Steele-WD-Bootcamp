@@ -28,7 +28,6 @@
                 <div class="select is-primary">
                     <select id="api-tech">
                         <option value="selected">Choose API Tech</option>
-                        <option value="xhr">XHR</option>
                         <option value="fetch-api">Fetch API</option>
                         <option value="axios">AXIOS</option>
                     </select>
@@ -38,11 +37,12 @@
                 <button
                     id="get-all-movies-btn"
                     class="button is-primary is-outlined mr-3"
+                    disabled
                 >
                     Get All Movies
                 </button>
                 <div class="select is-primary">
-                    <select id="page-number">
+                    <select disabled id="page-number">
                         <option value="selected">Select Page Number</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -70,6 +70,7 @@
         <section id="moviesSection" class="section hide">
             <!-- <div id="movieContainer" class="columns"></div> -->
         </section>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="app.js"></script>
     </body>
 </html>
