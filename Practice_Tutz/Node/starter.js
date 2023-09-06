@@ -37,3 +37,13 @@ function makeWebDir(location) {
 }
 
 makeWebDir(fsLocation);
+
+// importing from modules
+const myMath = require("./math");
+
+console.log(myMath);
+console.log(myMath.add(3, 7));
+
+// importing an entire dir
+const cats = require("./import_dir");
+console.log(cats);
