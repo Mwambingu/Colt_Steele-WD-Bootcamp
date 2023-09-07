@@ -11,6 +11,11 @@ const colors = require("colors");
 const args = process.argv.slice(2);
 const sentence = args[0];
 
+colors.setTheme({
+    success: ["green", "bold", "underline"],
+    error: ["red", "bold"],
+});
+
 const translate = (sentence) => {
     try {
         if (sentence) {
@@ -20,11 +25,14 @@ const translate = (sentence) => {
             }
             let langObj = langs.where("3", langISO);
             let langName = langObj.name;
-            console.log(langName.bold.green);
+            console.log(langName.success);
         }
         return;
     } catch (err) {
-        console.log("Error: Couldn't find translation!!".bold.red);
+        console.log(
+            "Error: Couldn't find a match for the language!! Use a longer sentence."
+                .error
+        );
     }
 };
 
