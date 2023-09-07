@@ -26,7 +26,9 @@ const translate = (sentence) => {
             let langObj = langs.where("3", langISO);
             let langName = langObj.name;
             console.log(langName.success);
+            return;
         }
+        console.log("No argument passed. Can't match empty arguments".error);
         return;
     } catch (err) {
         console.log(
