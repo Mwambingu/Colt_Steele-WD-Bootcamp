@@ -1,5 +1,6 @@
 // Creating an Express App
 const express = require("express");
+module.exports = { express };
 const app = express();
 
 // Accepting requests and giving responses using use
