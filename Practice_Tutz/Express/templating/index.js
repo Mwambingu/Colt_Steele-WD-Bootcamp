@@ -26,6 +26,31 @@ app.get("/cats", (req, res) => {
     res.render("cats", { cats });
 });
 
+app.get("/reddit/:subreddit", (req, res) => {
+    let { subreddit } = req.params;
+    let subPage = null;
+
+    if (subreddit === "soccer") {
+        subPage = soccer;
+        res.render("reddit", { subPage, subreddit });
+        return;
+    }
+    if (subreddit === "chickens") {
+        subPage = chickens;
+        res.render("reddit", { subPage, subreddit });
+        return;
+    }
+    if (subreddit === "mightyharvest") {
+        subPage = mightyharvest;
+        res.render("reddit", { subPage, subreddit });
+        return;
+    }
+
+    subreddit = null;
+
+    res.render("reddit", { subreddit });
+});
+
 app.get("/r/:subreddit", (req, res) => {
     const { subreddit } = req.params;
     res.render("subreddit", { subreddit: subreddit });
