@@ -32,6 +32,7 @@ app.get("/reddit/:subreddit", (req, res) => {
     if (jsonData[subreddit]) {
         subPage = jsonData[subreddit];
         res.render("reddit", { subPage });
+        return;
     }
     res.render("reddit", { subPage });
 });
