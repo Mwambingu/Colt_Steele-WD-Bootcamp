@@ -1,0 +1,115 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    font-family: "Roboto Condensed";
+}
+
+nav {
+    font-family: "Poppins";
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(0, 0, 0);
+}
+
+nav h1 {
+    color: rgb(243, 104, 49);
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    list-style-type: none;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+li {
+    width: 80px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+ul li:nth-of-type(1) {
+    background-color: rgb(243, 104, 49);
+}
+ul li:nth-of-type(2) {
+    background-color: lightgray;
+}
+
+.subreddit-card {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.reddit-card-header {
+    padding: 10px;
+}
+.subreddit-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.subreddit-name {
+    font-size: 3em;
+    font-weight: 100;
+}
+.subreddit-desc {
+    width: 300px;
+    font-size: 1em;
+}
+.subreddit-subs {
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(243, 104, 49);
+    font-size: 1em;
+    font-weight: 100;
+}
+
+.post-card {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.post-card:hover {
+    box-shadow: 0px 1px 5px 1px rgb(182, 182, 182);
+}
+.post-desc {
+    font-size: 1.3em;
+    font-weight: 100;
+    width: 350px;
+}
+
+.post-by {
+    font-size: 0.8em;
+    width: 90px;
+    text-decoration: underline;
+    text-align: center;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(243, 104, 49);
+}
+
+.post-img {
+    height: 400px;
+    width: 480px;
+    object-fit: cover;
+}
+
+.post-by:hover,
+.subreddit-subs:hover,
+ul li:nth-of-type(1):hover {
+    background-color: rgb(255, 107, 48);
+    color: white;
+}

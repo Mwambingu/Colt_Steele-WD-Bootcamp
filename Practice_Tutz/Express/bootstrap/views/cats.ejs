@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/base_template')%>
+    <body>
+        <%- include('partials/navbar')%>
+        <ul>
+            <% for (let cat of cats) { %>
+            <li><%= cat %></li>
+            <% } %>
+        </ul>
+    </body>
+</html>
