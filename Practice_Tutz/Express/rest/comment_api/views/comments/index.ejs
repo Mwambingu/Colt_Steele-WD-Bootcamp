@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Comments</title>
+        <%- include("partials/css")%>
+    </head>
+    <body>
+        <section class="container">
+            <h1>Comments</h1>
+            <% for (let comment of comments) { %>
+            <div>
+                <p class="mb-0">
+                    <b><%= comment.username %></b>: <%= comment.comment%>
+                </p>
+                <div class="mb-2">
+                    <a
+                        class="btn btn-sm btn-info"
+                        href="/comments/<%= comment.id%>"
+                        >Details</a
+                    >
+                    <a
+                        class="btn btn-sm btn-success"
+                        href="/comments/<%= comment.id%>/edit"
+                        >Edit</a
+                    >
+                </div>
+            </div>
+            <% } %>
+            <a class="btn btn-primary" href="/comments/new"
+                >Add a new comment</a
+            >
+        </section>
+    </body>
+</html>

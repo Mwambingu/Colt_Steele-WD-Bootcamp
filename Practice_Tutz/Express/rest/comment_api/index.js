@@ -6,26 +6,32 @@
 // DELETE /comments/:id - Destroy one comment -> destroy route
 
 const express = require("express");
+const { v4: uuid4 } = require("uuid");
 const path = require("path");
 const comments = [
     {
+        id: uuid4(),
         username: "Todd",
         comment: "Starfield was optimized. Get a new pc. LoL!",
     },
     {
+        id: uuid4(),
         username: "Phil",
         comment: "Starfield seems like an 11/10. I mean gamepass i'm I right?",
     },
     {
+        id: uuid4(),
         username: "Bobby",
         comment: "I think I might just stay as CEO.",
     },
     {
+        id: uuid4(),
         username: "Andrew",
         comment:
-            "Who need Fifa when you got hypermotion and don't forget some good all surprise mechanics.",
+            "Who needs Fifa when you got Hypermotion 3 and don't forget some good ol' surprise mechanics.",
     },
     {
+        id: uuid4(),
         username: "Jim",
         comment:
             "You will be paying more for PS plus. Coz we got the best exclusives. Also Microsoft owns activision so we need more money.",
@@ -45,7 +51,40 @@ app.get("/", (req, res) => {
     res.send("Welcome to the comments API");
 });
 
-const hello = "greetings";
+app.get("/comments", (req, res) => {
+    res.render("comments/index", { comments });
+});
+
+app.get("/comments/new", (req, res) => {
+    res.render("comments/new");
+});
+
+app.get("/comments/:id", (req, res) => {
+    const id = req.params.id;
+    const userData = comments.find((comment) => {
+        return comment.id === id;
+    });
+
+    res.render("comments/show", { userData });
+});
+
+app.get("/comments/:id/edit", (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    res.render("comments/edit", { id });
+});
+
+app.post("/comments", (req, res) => {
+    const { username, comment } = req.body;
+    const id = uuid4();
+    comments.push({ id, username, comment });
+    // res.render("comments", { comments }); -> Duplicates data entry
+    res.redirect("/comments");
+});
+
+app.put("/comments", (req, res) => {
+    console.log(req.body);
+});
 
 app.listen("3000", () => {
     console.log("Listening on port 3000");

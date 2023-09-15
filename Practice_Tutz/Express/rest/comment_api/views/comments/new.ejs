@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>New Comment</title>
+        <%- include("partials/css")%>
+    </head>
+    <body>
+        <section class="container">
+            <h1>Make new comment</h1>
+            <form class="mb-2" action="/comments" method="post">
+                <input
+                    class="form-control"
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Username"
+                />
+                <label class="form-label mt-2" for="comment">Comment</label>
+                <textarea
+                    class="form-control"
+                    name="comment"
+                    id="comment"
+                    cols="30"
+                    rows="5"
+                    placeholder="Enter comment.."
+                ></textarea>
+                <button class="btn btn-success mt-2" type="submit">
+                    Submit
+                </button>
+            </form>
+            <a class="btn btn-primary" href="/comments">Back to comments</a>
+        </section>
+    </body>
+</html>
