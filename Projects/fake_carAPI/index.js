@@ -88,11 +88,22 @@ const express = require("express");
 const path = require("path");
 app = express();
 app.set("view engine", "ejs");
-app.set;
+app.set("views", path.join(`${__dirname}/views`));
+app.use(express.static(`${__dirname}/public}`));
+app.use(express.urlencoded({ extended: true }));
 port = 3000;
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the Fake Car API");
+    res.render("index");
+});
+
+app.get("/cars", (req, res) => {
+    res.send("Here's a list of all the cars");
+});
+
+app.post("/", (req, res) => {
+    console.log(req.body);
+    res.redirect("/");
 });
 
 app.listen(port, () => {

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fake CarAPI</title>
+        <%- include("partials/bootstrap") %>
+    </head>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+        }
+        .api-content-wrapper,
+        .goto-btn-wrapper {
+            width: 100%;
+        }
+        .api-content-wrapper:hover {
+            background-color: rgba(0, 0, 0, 0.034);
+        }
+        .btn-wrapper {
+            width: 120px;
+        }
+        p {
+            margin: 0 auto;
+            width: 50%;
+        }
+        #api-section-wrapper {
+            width: 70%;
+        }
+        .btn {
+            width: 70px;
+        }
+        #go-to-button {
+            width: 120px;
+        }
+    </style>
+    <body>
+        <header class="container mb-5">
+            <h1 class="display-6 text-center">Welcome to the Fake Car API</h1>
+            <p class="text-center lead fs-6">
+                This is a RESTful fake carAPI meant to mimic CRUD operations
+                using in a DB. Instead of a real DB i'm fetching the data from a
+                list containing multiple car objects.
+            </p>
+        </header>
+        <section class="container d-flex justify-content-center">
+            <div id="api-section-wrapper">
+                <h3>API Documentation</h3>
+                <div
+                    class="api-content-wrapper card-body p-2 mb-2 border rounded-pill d-flex justify-content-start align-items-center"
+                >
+                    <div class="btn-wrapper">
+                        <button class="btn btn-primary rounded-pill btn-sm">
+                            GET
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="font-monospace fw-bold me-4">/cars</span>
+                        Lists all cars
+                    </div>
+                </div>
+                <div
+                    class="api-content-wrapper card-body p-2 mb-2 border rounded-pill d-flex justify-content-start align-items-center"
+                >
+                    <div class="btn-wrapper">
+                        <button class="btn btn-primary rounded-pill btn-sm">
+                            GET
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="font-monospace fw-bold me-4"
+                            >/cars/:id</span
+                        >
+                        Get a single car (using it's ID)
+                    </div>
+                </div>
+                <div
+                    class="api-content-wrapper card-body p-2 mb-2 border rounded-pill d-flex justify-content-start align-items-center"
+                >
+                    <div class="btn-wrapper">
+                        <button class="btn btn-primary rounded-pill btn-sm">
+                            GET
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="font-monospace fw-bold me-4"
+                            >/cars/:id/edit</span
+                        >
+                        Form to edit a specific comment
+                    </div>
+                </div>
+                <div
+                    class="api-content-wrapper card-body p-2 mb-2 border rounded-pill d-flex justify-content-start align-items-center"
+                >
+                    <div class="btn-wrapper">
+                        <button class="btn btn-success btn-sm rounded-pill">
+                            POST
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="font-monospace fw-bold me-4">/cars</span>
+                        Create new cars
+                    </div>
+                </div>
+                <div
+                    class="api-content-wrapper card-body p-2 mb-2 border rounded-pill d-flex justify-content-start align-items-center"
+                >
+                    <div class="btn-wrapper">
+                        <button class="btn btn-warning rounded-pill btn-sm">
+                            PATCH
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="font-monospace fw-bold me-4"
+                            >/cars/:id</span
+                        >
+                        Update car details
+                    </div>
+                </div>
+                <div
+                    class="api-content-wrapper card-body p-2 mb-2 border rounded-pill d-flex justify-content-start align-items-center"
+                >
+                    <div class="btn-wrapper">
+                        <button class="btn btn-danger rounded-pill btn-sm">
+                            DELETE
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="font-monospace fw-bold me-4"
+                            >/cars/:id</span
+                        >
+                        Destroy car object
+                    </div>
+                </div>
+                <div
+                    class="goto-btn-wrapper card-body p-2 mb-2 rounded-pill d-flex justify-content-center align-items-center"
+                >
+                    <div>
+                        <a
+                            href="/cars"
+                            id="go-to-button"
+                            class="btn btn-outline-primary rounded-pill fw-bold"
+                        >
+                            Go to API
+                            <i class="bi bi-arrow-right-square-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
