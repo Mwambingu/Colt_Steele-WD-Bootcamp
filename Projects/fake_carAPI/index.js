@@ -98,7 +98,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/cars", (req, res) => {
-    res.send("Here's a list of all the cars");
+    res.render("cars", { fake_cars });
 });
 
 app.post("/", (req, res) => {
