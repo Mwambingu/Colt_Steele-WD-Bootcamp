@@ -111,9 +111,16 @@ app.get("/cars", (req, res) => {
     res.render("cars", { fake_cars });
 });
 
-app.post("/", (req, res) => {
+app.get("/cars/show/:id", (req, res) => {
+    const { id } = req.params;
+    const fake_car = fake_cars.find((fake_car) => fake_car.car_id === id);
+    console.log(fake_car);
+    res.render("show", { fake_car });
+});
+
+app.post("/cars", (req, res) => {
     console.log(req.body);
-    res.redirect("/");
+    res.redirect("/cars");
 });
 
 app.listen(port, () => {
