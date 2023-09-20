@@ -9,46 +9,78 @@
     <style>
         .car-info-wrapper {
             height: 200px;
-            width: 600px;
+            width: 800px;
         }
         .img-wrapper {
-            width: 185px;
+            width: 215px;
         }
+
+        .add-car-btn {
+            margin: 0 auto;
+        }
+
     </style>
     <body>
         <header class="container mb-5">
             <h1 class="display-6 text-center">CARS</h1>
             <p class="text-center lead fs-6">List of all the cars</p>
+            <div class="d-flex justify-content-center">
+                <a
+                    href="/cars/new"
+                    class="btn btn-outline-primary rounded-pill fw-bold me-3"
+                >
+                    Add a Car
+                    <i class="bi bi-car-front"></i>
+                </a>
+                <a
+                    href="/"
+                    class="btn btn-outline-primary rounded-pill fw-bold"
+                >
+                    API Documentation
+                    <i class="bi bi-caret-right-square"></i>
+                </a>
+            </div>
         </header>
         <section class="container d-flex justify-content-center">
             <div id="api-section-wrapper">
-                <div
-                    class="car-info-wrapper card-body d-flex justify-content-start"
-                >
-                    <div class="img-wrapper me-2">
-                        <img
-                            class="img-thumbnail"
-                            src="https://images.unsplash.com/photo-1584273421792-84b448728b38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80"
-                            alt=""
-                        />
-                    </div>
-                    <div>
-                        <p class="lead">
-                            <span class="fw-bold">Car Type</span>: Sedan
-                        </p>
-                        <p class="lead">
-                            <span class="fw-bold">Car Name</span>: Nissan GTR
-                        </p>
-                        <div class="edit-btns">
-                            <button class="btn btn-warning">
-                                <i class="bi bi-pen"></i>
-                            </button>
-                            <button class="btn btn-danger">
-                                <i class="bi bi-trash3"></i>
-                            </button>
+                <% if (fake_cars) { %>
+                    <% for (let fake_car of fake_cars) {%>
+                        <div
+                        class="car-info-wrapper card-body d-flex justify-content-start"
+                    >
+                        <div class="img-wrapper me-2">
+                            <img
+                                class="img-thumbnail"
+                                src="<%= fake_car.img %>"
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <p class="lead">
+                                <span class="fw-bold">Car Type</span>: <%= fake_car.car_type %>
+                            </p>
+                            <p class="lead">
+                                <span class="fw-bold">Car Name</span>:<%= fake_car.car_name %>
+                            </p>
+                            <div class="edit-btns">
+                                <button class="btn btn-warning">
+                                    <i class="bi bi-pen"></i>
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                                <button class="btn btn-primary"> View Car
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <% }%>
+                <% } else {%>
+                    <div class="card-body">
+                        <h1>ERROR! No car objects found <i class="bi bi-exclamation-triangle"></i></i></h1>
+                    </div>
+                <% } %>
             </div>
         </section>
     </body>

@@ -1,6 +1,8 @@
+const { v4: uuidv4 } = require("uuid");
 fake_cars = [
     {
-        car_id: "2024 Honda Civic",
+        car_id: uuidv4(),
+        car_name: "2024 Honda Civic",
         car_type: "Sedan",
         car_brand: "Honda",
         engine_type: "turbocharged and intercooled DOHC 16-valve inline-4",
@@ -9,7 +11,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Mercedes-Benz E-Class",
+        car_id: uuidv4(),
+        car_name: "2024 Mercedes-Benz E-Class",
         car_type: "Coupe",
         car_brand: "Mercedes",
         engine_type: "turbocharged and intercooled DOHC 24-valve inline-6",
@@ -18,7 +21,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-mercedes-benz-e-class-coupe-1548703839.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Chevrolet Corvette",
+        car_id: uuidv4(),
+        car_name: "2024 Chevrolet Corvette",
         car_type: "Sports Car",
         car_brand: "Chevrolet",
         engine_type: "turbocharged and intercooled DOHC 24-valve inline-6",
@@ -27,7 +31,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-chevrolet-corvette-1548707003.jpg?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Porsche 718 Boxster",
+        car_id: uuidv4(),
+        car_name: "2024 Porsche 718 Boxster",
         car_type: "Convertible",
         car_brand: "Porsche",
         engine_type: "DOHC 24-valve flat-6",
@@ -36,7 +41,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-porche-718-boxster-1558114648.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Chrysler Pacifica",
+        car_id: uuidv4(),
+        car_name: "2024 Chrysler Pacifica",
         car_type: "SUV",
         car_brand: "Honda",
         engine_type: "DOHC 24-valve V-6",
@@ -45,7 +51,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-hyundai-kona-1548195339.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Volvo V60 / V60 Cross Country",
+        car_id: uuidv4(),
+        car_name: "2024 Volvo V60 / V60 Cross Country",
         car_type: "Station Wagon",
         car_brand: "Volvo",
         engine_type:
@@ -55,7 +62,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-volvo-v60-1558105490.jpg?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Volkswagen Golf GTI",
+        car_id: uuidv4(),
+        car_name: "2024 Volkswagen Golf GTI",
         car_type: "Hatchback",
         car_brand: "Volkswagen",
         engine_type:
@@ -65,7 +73,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-volkswagen-golf-gti-1548698211.jpg?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
-        car_id: "2024 Chrysler Pacifica",
+        car_id: uuidv4(),
+        car_name: "2024 Chrysler Pacifica",
         car_type: "Minivan",
         car_brand: "Chrysler",
         engine_type: "DOHC 24-valve V-6",
@@ -74,7 +83,8 @@ fake_cars = [
         img: "https://hips.hearstapps.com/hmg-prod/images/2019-chrysler-pacifica-1548198350.jpg?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
-        car_id: "2023 Honda Ridgeline",
+        car_id: uuidv4(),
+        car_name: "2023 Honda Ridgeline",
         car_type: "Pickup Truck",
         car_brand: "Honda",
         engine_type: "SOHC 24-valve V-6",
