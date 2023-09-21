@@ -114,12 +114,37 @@ app.get("/cars", (req, res) => {
 app.get("/cars/show/:id", (req, res) => {
     const { id } = req.params;
     const fake_car = fake_cars.find((fake_car) => fake_car.car_id === id);
-    console.log(fake_car);
     res.render("show", { fake_car });
+});
+
+app.get("/cars/new", (req, res) => {
+    res.render("new");
 });
 
 app.post("/cars", (req, res) => {
     console.log(req.body);
+    const {
+        car_name,
+        car_type,
+        car_brand,
+        engine_type,
+        engine_power,
+        price,
+        img,
+    } = req.body;
+
+    const car_id = uuidv4();
+    const new_car = {
+        car_id,
+        car_name,
+        car_type,
+        car_brand,
+        engine_type,
+        engine_power,
+        price,
+        img,
+    };
+    fake_cars.push(new_car);
     res.redirect("/cars");
 });
 
