@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-fake_cars = [
+const fake_cars = [
     {
         car_id: uuidv4(),
         car_name: "2024 Honda Civic",
@@ -96,11 +96,13 @@ fake_cars = [
 
 const express = require("express");
 const path = require("path");
+const methodOverride = require("method-override");
 app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(`${__dirname}/views`));
 app.use(express.static(`${__dirname}/public}`));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 port = 3000;
 
 app.get("/", (req, res) => {
@@ -111,14 +113,14 @@ app.get("/cars", (req, res) => {
     res.render("cars", { fake_cars });
 });
 
-app.get("/cars/show/:id", (req, res) => {
+app.get("/cars/new", (req, res) => {
+    res.render("new");
+});
+
+app.get("/cars/:id", (req, res) => {
     const { id } = req.params;
     const fake_car = fake_cars.find((fake_car) => fake_car.car_id === id);
     res.render("show", { fake_car });
-});
-
-app.get("/cars/new", (req, res) => {
-    res.render("new");
 });
 
 app.post("/cars", (req, res) => {
@@ -145,6 +147,61 @@ app.post("/cars", (req, res) => {
         img,
     };
     fake_cars.push(new_car);
+    res.redirect("/cars");
+});
+
+app.get("/cars/:id/edit", (req, res) => {
+    const { id } = req.params;
+    const fake_car = fake_cars.find((fake_car) => fake_car.car_id === id);
+    res.render("edit", { fake_car });
+});
+
+app.patch("/cars/:id/", (req, res) => {
+    const { id } = req.params;
+    const {
+        car_name,
+        car_type,
+        car_brand,
+        engine_type,
+        engine_power,
+        price,
+        img,
+    } = req.body;
+
+    const fake_car = fake_cars.find((fake_car) => fake_car.car_id === id);
+
+    if (car_name) {
+        fake_car.car_name = car_name;
+    }
+    if (car_type) {
+        fake_car.car_type = car_type;
+    }
+    if (car_brand) {
+        fake_car.car_brand = car_brand;
+    }
+    if (engine_type) {
+        fake_car.engine_type = engine_type;
+    }
+    if (engine_power) {
+        fake_car.engine_power = engine_power;
+    }
+    if (price) {
+        fake_car.price = price;
+    }
+    if (img) {
+        fake_car.img = img;
+    }
+
+    res.redirect("/cars");
+});
+
+app.delete("/cars/:id", (req, res) => {
+    const { id } = req.params;
+    // fake_cars = fake_cars.filter((fake_car) => fake_car.car_id != id); -> adding cars would reload the entire car list even the deleted ones
+
+    const carIndex = fake_cars.findIndex((fake_car) => fake_car.car_id === id);
+    const deletedCar = fake_cars.splice(carIndex, 1);
+    console.log(`Deleted object of id: ${deletedCar[0].car_id}`);
     res.redirect("/cars");
 });
 

@@ -18,7 +18,9 @@
         .add-car-btn {
             margin: 0 auto;
         }
-
+        .edit-btns {
+            width: 200px;
+        }
     </style>
     <body>
         <header class="container mb-5">
@@ -62,14 +64,16 @@
                             <p class="lead">
                                 <span class="fw-bold">Name</span>: <%= fake_car.car_name %>
                             </p>
-                            <div class="edit-btns">
-                                <button class="btn btn-warning">
+                            <div class="edit-btns d-flex justify-content-between">
+                                <a href="/cars/<%= fake_car.car_id %>/edit" class="btn btn-warning">
                                     <i class="bi bi-pen"></i>
-                                </button>
-                                <button class="btn btn-danger">
-                                    <i class="bi bi-trash3"></i>
-                                </button>
-                                <a href="/cars/show/<%= fake_car.car_id%>" class="btn btn-primary"> View Car
+                                </a>
+                                <form action="/cars/<%= fake_car.car_id%>/?_method=DELETE" method="post">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                </form>
+                                <a href="/cars/<%= fake_car.car_id%>" class="btn btn-primary"> View Car
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </div>

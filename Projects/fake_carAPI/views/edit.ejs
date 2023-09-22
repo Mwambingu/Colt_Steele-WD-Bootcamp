@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Update Car</title>
+        <%- include("partials/bootstrap") %>
+    </head>
+    <style>
+        .car-info-wrapper {
+            height: 200px;
+            width: 800px;
+        }
+        .img-wrapper {
+            width: 215px;
+        }
+
+        .add-car-btn {
+            margin: 0 auto;
+        }
+        tr th:nth-of-type(1) {
+            width: 150px;
+        }
+        #section-content-wrapper {
+            width: 600px;
+        }
+    </style>
+    <body>
+        <header class="container mb-5">
+            <h1 class="display-6 text-center">
+                Update <%= fake_car.car_name %>
+            </h1>
+        </header>
+        <section class="container d-flex justify-content-center">
+            <div id="section-content-wrapper">
+                <form
+                    action="/cars/<%= fake_car.car_id%>/?_method=patch"
+                    method="post"
+                >
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="car_name"
+                        id="car_name"
+                        placeholder="Enter car name..."
+                    />
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="car_type"
+                        id="car_type"
+                        placeholder="Enter car type..."
+                    />
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="car_brand"
+                        id="car_brand"
+                        placeholder="Enter car brand..."
+                    />
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="engine_type"
+                        id="engine_type"
+                        placeholder="Enter car engine type..."
+                    />
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="engine_power"
+                        id="engine_power"
+                        placeholder="Enter car engine power..."
+                    />
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="price"
+                        id="price"
+                        placeholder="Enter car price...ex.$93,000"
+                    />
+                    <input
+                        class="form-control mb-3 rounded-pill"
+                        type="text"
+                        name="img"
+                        id="img"
+                        placeholder="Enter car image link..."
+                    />
+                    <button type="submit" class="btn btn-primary rounded-pill">
+                        Update Car <i class="bi bi-car-front"></i>
+                    </button>
+                </form>
+                <div class="d-flex justify-content-center">
+                    <a
+                        href="/cars/"
+                        class="btn btn-outline-primary rounded-pill"
+                        ><i class="bi bi-caret-left-square"></i> Go Back</a
+                    >
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
