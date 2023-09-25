@@ -32,7 +32,7 @@ Created a fake car API using REST. The focus for this task I was focusing specif
 
 ### Adding a new car to the Fake db
 
-![](./5-add-car.jpg)
+![](./5-add-car.gif)
 
 ## My process
 
