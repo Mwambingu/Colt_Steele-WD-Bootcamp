@@ -66,7 +66,8 @@ async function main() {
     }
 
     const checkMovie = await Movie.find({ title: "Terminator Dark Fate" });
-    if (!checkMovie) {
+    console.log(checkMovie);
+    if (!checkMovie.length) {
         const newMovie = new Movie({
             title: "Terminator Dark Fate",
             year: 2019,
@@ -88,6 +89,11 @@ async function main() {
         );
     }
 
+    if (checkMovie.length > 0) {
+        await Movie.updateOne({ title: "Terminator Dark Fate" }, { score: 10 });
+    }
+
+    await Movie.deleteOne({ title: "Moonrise Kingdom" });
     // const movieToUpdate = await Movie.find({ year: 2019 });
 
     // if (movieToUpdate.length) {
