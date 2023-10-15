@@ -25,7 +25,7 @@ async function main() {
         categories: [String],
         size: {
             type: String,
-            enum: ["250ml", "300ml"],
+            enum: ["250ml", "300ml", "1L", "2L"],
             default: "250ml",
         },
     });
@@ -42,6 +42,30 @@ async function main() {
         this.save();
     };
 
+    // Static methods
+    productsSchema.statics.fireSale = async function () {
+        await this.updateMany(
+            {},
+            {
+                $set: {
+                    "price.online": 10,
+                    "price.inStore": 10,
+                    isOnSale: true,
+                    size: "1L",
+                },
+            },
+            {
+                runValidators: true,
+            }
+        );
+    };
+
+    productsSchema.statics.addDefaultCategories = async function (categories) {
+        await this.updateMany({}, { $push: { categories: categories } });
+    };
+
+    // creating the schema model
+
     const Product = mongoose.model("Product", productsSchema);
 
     const products = await Product.find({
@@ -49,10 +73,32 @@ async function main() {
     });
 
     if (!products.length) {
-        const lotion = new Product({
+        let lotion = new Product({
             name: "Nice & Lovely - Suppleness",
             quantity: 40,
             isOnSale: false,
+        });
+
+        lotion.save();
+
+        lotion = new Product({
+            name: "Nice & Lovely - Hardcore",
+            quantity: 40,
+            isOnSale: false,
+            "price.online": 700,
+            "price.inStore": 620,
+            size: "2L",
+        });
+
+        lotion.save();
+
+        lotion = new Product({
+            name: "Nice & Lovely - BeachReady",
+            quantity: 40,
+            isOnSale: false,
+            "price.online": 700,
+            "price.inStore": 620,
+            size: "2L",
         });
 
         lotion.save();
@@ -66,4 +112,6 @@ async function main() {
     console.log(update);
     update.onSale();
     update.addCategory("Skin-care");
+    Product.fireSale();
+    Product.addDefaultCategories("lotion");
 }
