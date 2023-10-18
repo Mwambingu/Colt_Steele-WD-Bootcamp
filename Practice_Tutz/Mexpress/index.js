@@ -2,6 +2,7 @@ const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
 const path = require("path");
+const methodOverride = require("method-override");
 const { Product } = require("./models/product.js");
 const port = 3000;
 
@@ -15,13 +16,17 @@ async function main() {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(methodOverride("_method"));
+
 app.get("/", (req, res) => {
     res.render("index");
 });
 
 app.get("/products", async (req, res) => {
     const products = await Product.find({});
-    res.send(products);
+    console.log(products);
+    res.render("./products/index", { products });
 });
 
 app.listen(port, () => {
