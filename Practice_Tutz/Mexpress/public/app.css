@@ -132,7 +132,7 @@ body {
     margin: 0 auto;
     font-family: "Open Sans", sans-serif;
     height: 100vh;
-    width: 80%;
+    width: 100%;
 }
 
 .danger {
@@ -154,7 +154,7 @@ body {
 .product-container {
     padding: 5px;
     margin: 20px auto;
-    width: 100%;
+    width: 75%;
 }
 
 .product {
@@ -184,6 +184,7 @@ body {
     padding: 5px 2.5px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -198,12 +199,27 @@ body {
     background-color: rgb(2, 196, 2);
 }
 
-.product.btn {
-    margin: 0 10px;
-}
-
 @media (min-width: 368px) {
     .product {
         width: 300px;
+    }
+    .btn {
+        padding: calc(5px * 1.8) calc(2.5px * 1.8);
+    }
+}
+
+@media (min-width: 576px) {
+    .product {
+        width: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .product {
+        width: 600px;
+        font-size: 1.2em;
+    }
+    .btn {
+        width: calc(50px * 2.2);
     }
 }

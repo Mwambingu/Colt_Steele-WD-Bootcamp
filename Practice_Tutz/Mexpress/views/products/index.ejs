@@ -9,7 +9,7 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,700;0,800;1,300;1,500;1,700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="static/app.css" />
+        <link rel="stylesheet" href="/static/app.css" />
         <title>Groceries</title>
     </head>
     <body>
@@ -19,7 +19,9 @@
             <div class="product">
                 <div><%= product.name %></div>
                 <div class="btn-container">
-                    <a class="btn success">View</a>
+                    <a href="/products/<%=product.id %>" class="btn success"
+                        >View</a
+                    >
                     <a class="btn danger">Delete</a>
                 </div>
             </div>
