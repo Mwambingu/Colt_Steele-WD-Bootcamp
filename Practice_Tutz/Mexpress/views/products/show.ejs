@@ -14,41 +14,51 @@
     </head>
     <body>
         <h1 class="page-title"><%= product.name %></h1>
-        <div class="product-container">
+        <div class="table-container">
             <table>
                 <tr class="table-head">
                     <th>Property</th>
                     <th>Data</th>
                 </tr>
                 <tr>
-                    <td class="table-property">ID</td>
-                    <td class="table-data"><%= product.id%></td>
+                    <td class="table-property t-left">ID</td>
+                    <td class="table-data t-right"><%= product.id%></td>
                 </tr>
                 <tr>
-                    <td class="table-property">Name</td>
-                    <td class="table-data"><%= product.name %></td>
+                    <td class="table-property t-left">Name</td>
+                    <td class="table-data t-right"><%= product.name %></td>
                 </tr>
                 <tr>
-                    <td class="table-property">Price</td>
-                    <td class="table-data"><%= product.price.online %></td>
+                    <td class="table-property t-left">Price</td>
+                    <td class="table-data t-right">
+                        <%= product.price.online %>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="table-property">Quantity</td>
-                    <td class="table-data"><%= product.quantity %></td>
+                    <td class="table-property t-left">Quantity</td>
+                    <td class="table-data t-right"><%= product.quantity %></td>
                 </tr>
                 <tr>
-                    <td class="table-property">Is on sale</td>
-                    <td class="table-data"><%= product.isOnSale %></td>
+                    <td class="table-property t-left">Is on sale</td>
+                    <td class="table-data t-right"><%= product.isOnSale %></td>
                 </tr>
                 <tr>
-                    <td class="table-property">Categories</td>
-                    <td class="table-data"><%= product.categories %></td>
+                    <td class="table-property t-left">Categories</td>
+                    <td class="table-data t-right">
+                        <%= product.categories %>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="table-property">Size</td>
-                    <td class="table-data"><%= product.size %></td>
+                    <td class="table-property t-left">Size</td>
+                    <td class="table-data t-right"><%= product.size %></td>
                 </tr>
             </table>
+            <div class="shw-btn-container">
+                <a href="/products/" class="btn primary">Go back</a>
+                <a href="/proudcts/<%=product.id%>/edit" class="btn primary"
+                    >Update</a
+                >
+            </div>
         </div>
     </body>
 </html>

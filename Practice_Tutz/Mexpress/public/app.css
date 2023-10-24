@@ -145,6 +145,11 @@ body {
     color: white;
 }
 
+.primary {
+    background-color: darkblue;
+    color: white;
+}
+
 .page-title {
     font-size: 2.5em;
     font-weight: 800;
@@ -197,6 +202,57 @@ body {
 
 .success:hover {
     background-color: rgb(2, 196, 2);
+}
+
+.primary:hover {
+    background-color: rgb(5, 5, 238);
+}
+
+.table-container {
+    margin: 20px auto;
+}
+
+table {
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.table-head th,
+.t-left,
+.t-right {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.table-head {
+    font-weight: 700;
+    background-color: black;
+    color: white;
+    text-align: left;
+}
+
+.t-left {
+    width: 50px;
+    text-align: left;
+    font-weight: 700;
+    background-color: rgb(66, 66, 66);
+    color: white;
+}
+
+.t-right {
+    width: 250px;
+    text-align: left;
+}
+
+.shw-btn-container {
+    margin: 20px auto;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+.shw-btn-container .btn {
+    width: 100px;
+    padding: calc(5px * 1.8) calc(2.5px * 1.8);
 }
 
 @media (min-width: 368px) {
