@@ -150,6 +150,18 @@ body {
     color: white;
 }
 
+.danger:hover {
+    background-color: rgb(224, 3, 3);
+}
+
+.success:hover {
+    background-color: rgb(2, 196, 2);
+}
+
+.primary:hover {
+    background-color: rgb(5, 5, 238);
+}
+
 .page-title {
     font-size: 2.5em;
     font-weight: 800;
@@ -196,16 +208,16 @@ body {
     -o-border-radius: 5px;
 }
 
-.danger:hover {
-    background-color: rgb(224, 3, 3);
+.create-btn-container {
+    display: flex;
+    justify-content: center;
 }
 
-.success:hover {
-    background-color: rgb(2, 196, 2);
-}
-
-.primary:hover {
-    background-color: rgb(5, 5, 238);
+.create-btn-container .btn {
+    width: 150px;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: 700;
 }
 
 .table-container {

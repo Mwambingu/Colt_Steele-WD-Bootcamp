@@ -29,11 +29,19 @@ app.get("/products", async (req, res) => {
     res.render("./products/index", { products });
 });
 
+app.get("/products/new", async (req, res) => {
+    res.send("Creating new objects");
+});
+
 app.get("/products/:id", async (req, res) => {
     const { id } = req.params;
     const product = await Product.findOne({ _id: id });
     console.log(product);
     res.render("./products/show", { product });
+});
+
+app.get("/products/:id/edit", async (req, res) => {
+    res.send("Updating products");
 });
 
 app.listen(port, () => {
