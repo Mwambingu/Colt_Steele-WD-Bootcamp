@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,700;0,800;1,300;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/app.css" />
+        <title>Groceries</title>
+    </head>
+    <body>
+        <h1 class="page-title">Create New Product</h1>
+        <div class="form-container">
+            <form action="/products/" method="post">
+                <div class="form-control-container">
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Enter product name"
+                    />
+                    <input
+                        type="text"
+                        name="store-price"
+                        id="store-price"
+                        placeholder="Enter store price"
+                    />
+                    <input
+                        type="text"
+                        name="online-price"
+                        id="online-price"
+                        placeholder="Enter online price"
+                    />
+                    <input
+                        type="text"
+                        name="quantity"
+                        id="quantity"
+                        placeholder="Enter product quantity"
+                    />
+                    <div class="size-selector">
+                        <label for="size">Choose product size: </label>
+                        <select name="size" id="size">
+                            <option value="xs-grams">125g</option>
+                            <option value="sm-grams">250g</option>
+                            <option value="m-grams">300g</option>
+                            <option value="l-grams">1Kg</option>
+                            <option value="xl-grams">2kg</option>
+                        </select>
+                    </div>
+                    <button class="btn primary">Submit</button>
+                </div>
+            </form>
+            <div class="shw-btn-container">
+                <a href="/products/" class="btn primary">Go back</a>
+            </div>
+        </div>
+    </body>
+</html>

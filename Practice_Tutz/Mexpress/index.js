@@ -30,7 +30,7 @@ app.get("/products", async (req, res) => {
 });
 
 app.get("/products/new", async (req, res) => {
-    res.send("Creating new objects");
+    res.render("./products/new");
 });
 
 app.get("/products/:id", async (req, res) => {
