@@ -267,8 +267,13 @@ table {
     padding: calc(5px * 1.8) calc(2.5px * 1.8);
 }
 
+.form-container,
+.form-control-container input {
+    font-size: 1.5rem;
+}
+
 .form-container {
-    margin: 20px auto;
+    margin: 40px auto;
 }
 
 .form-control-container {
@@ -278,10 +283,41 @@ table {
 }
 
 .form-control-container input {
-    width: 300px;
-    margin-bottom: 10px;
-    padding: 20px;
-    font-size: 1.5em;
+    width: 400px;
+    margin-bottom: 30px;
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    transition: 0.25s all ease-in-out;
+    -webkit-transition: 0.25s all ease-in-out;
+    -moz-transition: 0.25s all ease-in-out;
+    -ms-transition: 0.25s all ease-in-out;
+    -o-transition: 0.25s all ease-in-out;
+}
+
+.form-control-container input:focus {
+    border-width: 3px;
+    font-size: 1.6rem;
+}
+
+.form-control-container select {
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+#submit-btn,
+.submit-btns a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+.submit-btns {
+    margin: 40px 0px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media (min-width: 368px) {

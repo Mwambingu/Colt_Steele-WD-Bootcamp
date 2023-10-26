@@ -17,7 +17,7 @@ const productsSchema = new mongoose.Schema({
     },
     quantity: { type: Number, required: true },
     isOnSale: { type: Boolean, required: true, default: false },
-    categories: [String],
+    categories: { type: [String], default: ["grocery"] },
     size: {
         type: String,
         enum: ["125g", "250g", "300g", "1Kg", "2Kg"],
