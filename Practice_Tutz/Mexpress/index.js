@@ -51,20 +51,68 @@ app.post("/products", async (req, res) => {
     }
 });
 
+app.put("/products", async (req, res) => {
+    try {
+        let { name, storePrice, onlinePrice, quantity, size } = req.body;
+        const { id } = req.params;
+
+        product = await Product.findOne({ id: id });
+
+        console.log(product);
+
+        if (!name) {
+            name = product.name;
+        }
+
+        if (!storePrice) {
+            storePrice = product.price.inStore;
+        }
+
+        if (!onlinePrice) {
+            onlinePrice = product.price.online;
+        }
+
+        if (!quantity) {
+            quantity = product.quantity;
+        }
+
+        if (!size) {
+            size = product.size;
+        }
+
+        update = {
+            name: name,
+            price: { online: onlinePrice, inStore: storePrice },
+            quantity: quantity,
+            size: size,
+        };
+
+        const updatedProduct = await Product.findOneAndUpdate(
+            { id: id },
+            update,
+            { new: true }
+        );
+        res.redirect("/products");
+    } catch (e) {
+        console.log(e);
+        res.redirect("/products");
+    }
+});
+
 app.get("/products/new", async (req, res) => {
     res.render("./products/new");
 });
 
 app.get("/products/:id", async (req, res) => {
     const { id } = req.params;
-    console.log(id);
     const product = await Product.findOne({ _id: id });
-    console.log(product);
     res.render("./products/show", { product });
 });
 
 app.get("/products/:id/edit", async (req, res) => {
-    res.send("Updating products");
+    const { id } = req.params;
+    const product = await Product.findOne({ _id: id });
+    res.render("./products/update", { product });
 });
 
 app.listen(port, () => {
