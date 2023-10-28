@@ -99,6 +99,19 @@ app.put("/products", async (req, res) => {
     }
 });
 
+app.delete("/products", async (req, res) => {
+    const { id } = req.query;
+
+    console.log(id);
+
+    product = await Product.findOneAndDelete({ _id: id });
+
+    console.log(
+        `Product: ${product.name} of ID: ${product.id} has been deleted`
+    );
+    res.redirect("/products");
+});
+
 app.get("/products/new", async (req, res) => {
     res.render("./products/new");
 });

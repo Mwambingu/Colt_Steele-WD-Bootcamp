@@ -194,6 +194,17 @@ body {
     background-color: rgb(226, 223, 223);
 }
 
+.btn-container {
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.btn a {
+    text-decoration: none;
+}
+
 .btn {
     display: inline-block;
     width: 50px;
@@ -324,6 +335,7 @@ table {
     .product {
         width: 300px;
     }
+
     .btn {
         padding: calc(5px * 1.8) calc(2.5px * 1.8);
     }
