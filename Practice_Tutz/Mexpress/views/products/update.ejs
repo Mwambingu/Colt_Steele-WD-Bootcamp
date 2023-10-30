@@ -16,7 +16,7 @@
         <h1 class="page-title"><%= product.name %></h1>
         <div class="form-container">
             <form
-                action="/products/?_method=put&id=<%=product.id%>"
+                action="/products/?_method=patch&id=<%=product.id%>"
                 method="post"
             >
                 <div class="form-control-container">

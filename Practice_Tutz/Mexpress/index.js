@@ -51,14 +51,12 @@ app.post("/products", async (req, res) => {
     }
 });
 
-app.put("/products", async (req, res) => {
+app.patch("/products", async (req, res) => {
     try {
         let { name, storePrice, onlinePrice, quantity, size } = req.body;
-        const { id } = req.params;
+        const { id } = req.query;
 
-        product = await Product.findOne({ id: id });
-
-        console.log(product);
+        product = await Product.findOne({ _id: id });
 
         if (!name) {
             name = product.name;
@@ -88,7 +86,7 @@ app.put("/products", async (req, res) => {
         };
 
         const updatedProduct = await Product.findOneAndUpdate(
-            { id: id },
+            { _id: id },
             update,
             { new: true }
         );
