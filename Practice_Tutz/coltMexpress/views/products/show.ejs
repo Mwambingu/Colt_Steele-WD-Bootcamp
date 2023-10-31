@@ -9,20 +9,17 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,700;0,800;1,300;1,500;1,700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="/static/app.css" />
-        <title>Products</title>
+        <!-- <link rel="stylesheet" href="/static/app.css" /> -->
+        <title>Groceries</title>
     </head>
     <body>
-        <h1 class="page-title">Products</h1>
-        <% for (let product of products) {%>
-        <ul class="product-container">
-            <li class="product">
-                <a href="/products/<%= product.id %>"><%= product.name %></a>
-            </li>
+        <h1 class="page-title"><%= product.name %></h1>
+        <ul>
+            <li>Price: $<%= product.price %></li>
+            <li>Category: <%= product.category %></li>
         </ul>
-        <% } %>
-        <div class="create-btn-container">
-            <a class="btn primary" href="/products/new">Create Product</a>
-        </div>
+        <a href="/products/<%= product.id%>/edit">Update</a>
+        <br />
+        <a href="/products">Go back</a>
     </body>
 </html>
