@@ -13,16 +13,37 @@
         <title>Products</title>
     </head>
     <body>
-        <h1 class="page-title">Products</h1>
+        <h1 class="page-title"><%= category %> products</h1>
         <% for (let product of products) {%>
         <ul class="product-container">
             <li class="product">
                 <a href="/products/<%= product.id %>"><%= product.name %></a>
+                <form
+                    id="delete-form"
+                    action="/products/<%=product.id%>?_method=DELETE"
+                    method="POST"
+                >
+                    <a id="delete-btn" class="btn danger">Delete</a>
+                </form>
             </li>
         </ul>
         <% } %>
         <div class="create-btn-container">
             <a class="btn primary" href="/products/new">Create Product</a>
+            <% if (category !== "all") { %>
+            <a style="margin-left: 10px" class="btn primary" href="/products"
+                >All Products</a
+            >
+            <% } %>
         </div>
+
+        <script>
+            const deleteBtn = document.querySelector("#delete-btn");
+
+            deleteBtn.addEventListener("click", (evt) => {
+                const deleteForm = document.querySelector("#delete-form");
+                deleteForm.submit();
+            });
+        </script>
     </body>
 </html>
