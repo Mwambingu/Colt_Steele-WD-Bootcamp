@@ -13,6 +13,16 @@ const port = 3000;
 
 app.use(morgan("dev"));
 
+app.use((req, res, next) => {
+    console.log("Middleware func called!!");
+    return next();
+});
+
+app.use((req, res, next) => {
+    console.log("Middleware func 2 called!!");
+    return next();
+});
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
