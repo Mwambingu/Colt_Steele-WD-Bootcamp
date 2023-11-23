@@ -14,6 +14,11 @@ const port = 3000;
 app.use(morgan("dev"));
 
 app.use((req, res, next) => {
+    req.requestTime = Date.now();
+    next();
+});
+
+app.use((req, res, next) => {
     console.log("Middleware func called!!");
     return next();
 });
@@ -27,6 +32,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
 app.get("/", (req, res) => {
+    console.log(req.requestTime);
     res.render("index");
 });
 
