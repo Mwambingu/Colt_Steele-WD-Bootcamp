@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
+const { kMaxLength } = require("buffer");
 
 morgan("tiny");
 
@@ -28,12 +29,48 @@ app.use((req, res, next) => {
     return next();
 });
 
+// app.use("/secret", (req, res, next) => {
+//     console.log(req.query);
+//     const { password } = req.query;
+
+//     console.log(password === "chickennuggets");
+
+//     if (password === "chickennuggets") {
+//         console.log("Welcome Back Boss!!");
+//         res.redirect("/secret1");
+//     } else {
+//         console.log("Incorrect password!");
+//         res.redirect("/");
+//     }
+// });
+
+const verifyPassword = (req, res, next) => {
+    console.log(req.query);
+    const { password } = req.query;
+    if (password === "chickennuggets") {
+        console.log("Welcome Back Boss!!");
+        next();
+    } else {
+        res.send("Incorrect password!");
+    }
+};
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
 app.get("/", (req, res) => {
     console.log(req.requestTime);
     res.render("index");
+});
+
+app.get("/secret", verifyPassword, (req, res) => {
+    res.send(
+        "My Secret: Sometimes I wear headphones in public so I don't have to talk to people!!"
+    );
+});
+
+app.use((req, res, next) => {
+    res.status(404).send("Error 404! Page not found!!");
 });
 
 app.listen(port, () => {
