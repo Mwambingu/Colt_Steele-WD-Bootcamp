@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
-const { kMaxLength } = require("buffer");
 
 morgan("tiny");
 
@@ -50,9 +49,9 @@ const verifyPassword = (req, res, next) => {
     if (password === "chickennuggets") {
         console.log("Welcome Back Boss!!");
         next();
-    } else {
-        res.send("Incorrect password!");
     }
+    // res.send("Incorrect password!");
+    throw new Error("Password is required!!");
 };
 
 app.set("view engine", "ejs");
