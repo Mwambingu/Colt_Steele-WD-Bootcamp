@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
+const AppError = require("./AppError");
 
 morgan("tiny");
 
@@ -51,7 +52,11 @@ const verifyPassword = (req, res, next) => {
         next();
     }
     // res.send("Incorrect password!");
-    throw new Error("Password is required!!");
+    res.status(401);
+    // throw new Error("Password is required!!");
+
+    // Using a custom error handler
+    throw new AppError("Password is required!!", 401);
 };
 
 app.set("view engine", "ejs");
@@ -72,16 +77,27 @@ app.get("/secret", verifyPassword, (req, res) => {
     );
 });
 
+app.get("/admin", (req, res) => {
+    throw new AppError("You are not an Admin", 403);
+});
+
 app.use((req, res, next) => {
     res.status(404).send("Error 404! Page not found!!");
 });
 
+// app.use((err, req, res, next) => {
+//     console.log("*****************");
+//     console.log("This is an error");
+//     console.log("*****************");
+// res.status(500).send("Oh boy it's a whole clusterfuck down here!!");
+
+//Letting express handle the error by calling the next error handling middleware
+//     next(err);
+// });
+
 app.use((err, req, res, next) => {
-    console.log("*****************");
-    console.log("This is an error");
-    console.log("*****************");
-    // res.status(500).send("Oh boy it's a whole clusterfuck down here!!");
-    next(err); //Letting express handle the error by calling the next error handling middleware
+    const { status = 500, message = "Something went wrong!!" } = err;
+    res.status(status).send(message);
 });
 
 app.listen(port, () => {
