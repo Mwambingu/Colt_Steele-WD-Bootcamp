@@ -62,6 +62,10 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/error", (req, res) => {
+    chicken.fly();
+});
+
 app.get("/secret", verifyPassword, (req, res) => {
     res.send(
         "My Secret: Sometimes I wear headphones in public so I don't have to talk to people!!"
@@ -70,6 +74,14 @@ app.get("/secret", verifyPassword, (req, res) => {
 
 app.use((req, res, next) => {
     res.status(404).send("Error 404! Page not found!!");
+});
+
+app.use((err, req, res, next) => {
+    console.log("*****************");
+    console.log("This is an error");
+    console.log("*****************");
+    // res.status(500).send("Oh boy it's a whole clusterfuck down here!!");
+    next(err); //Letting express handle the error by calling the next error handling middleware
 });
 
 app.listen(port, () => {
