@@ -207,6 +207,7 @@ table {
     font-weight: 700;
     font-size: 2rem;
     transition: all .1s ease;
+    cursor: pointer;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -225,20 +226,17 @@ table {
 .signs {
   background-color: var(--color-five);
   color: var(--color-three);
-  font-size: 4rem;
 }
 
 .dot-sign {
   background-color: var(--color-four);
   color: var(--color-three);
-  font-size: 4rem;
   font-weight: 500;
 }
 
 .equal-sign {
   background-color: var(--color-four);
   color: var(--color-three);
-  font-size: 4rem;
   font-weight: 500;
 }
 
@@ -253,3 +251,18 @@ table {
 .dot-sign:hover, .equal-sign:hover {
   background-color: #ffce52;
 }
+
+.animate-btn {
+    font-size: 3rem;
+    padding: 40px;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
