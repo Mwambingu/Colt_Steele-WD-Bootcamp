@@ -1,4 +1,4 @@
-const numBtns = document.querySelectorAll(".square-btn");
+const allBtns = document.querySelectorAll(".square-btn");
 
 // for (numBtn of numBtns) {
 //     console.log(numBtn.innerText);
@@ -8,13 +8,13 @@ const numBtns = document.querySelectorAll(".square-btn");
 //     });
 // }
 
-numBtns.forEach((numBtn) => {
-    numBtn.addEventListener("click", () => {
-        numBtn.classList.add("animate-btn");
+allBtns.forEach((allBtn) => {
+    allBtn.addEventListener("click", () => {
+        allBtn.classList.add("animate-btn");
         setTimeout(() => {
-            numBtn.classList.remove("animate-btn");
+            allBtn.classList.remove("animate-btn");
         }, 100);
-        console.log(numBtn.innerText);
+        console.log(allBtn.innerText);
     });
 });
 
