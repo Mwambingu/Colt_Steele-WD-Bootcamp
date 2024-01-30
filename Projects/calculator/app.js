@@ -4,6 +4,7 @@ const screen = document.querySelector(".calc-screen");
 const signs = document.querySelectorAll(".signs");
 const resetBtn = document.querySelector(".reset-btn");
 const equalSign = document.querySelector(".equal-sign");
+const clearBtn = document.querySelector(".clear-btn");
 let inputData = [];
 
 // for (numBtn of numBtns) {
@@ -74,4 +75,10 @@ resetBtn.addEventListener("click", () => {
     inputData = [];
     console.log(inputData);
     screen.innerText = "";
+});
+
+// Clear button functionality
+clearBtn.addEventListener("click", () => {
+    let strLen = screen.innerText.length;
+    screen.innerText = screen.innerText.slice(0, strLen - 1);
 });
