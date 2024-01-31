@@ -5,7 +5,9 @@ const signs = document.querySelectorAll(".signs");
 const resetBtn = document.querySelector(".reset-btn");
 const equalSign = document.querySelector(".equal-sign");
 const clearBtn = document.querySelector(".clear-btn");
+const dotSign = document.querySelector(".dot-sign");
 let inputData = [];
+let count = 0;
 
 // for (numBtn of numBtns) {
 //     console.log(numBtn.innerText);
@@ -53,8 +55,20 @@ numBtns.forEach((numBtn) => {
     });
 });
 
+dotSign.addEventListener("click", () => {
+    if (screen.innerText === "") {
+        return;
+    }
+    if (count >= 1) {
+        return;
+    }
+    document.querySelector(".calc-screen").innerText += dotSign.innerText;
+    count += 1;
+});
+
 signs.forEach((signs) => {
     signs.addEventListener("click", () => {
+        count = 0;
         let input = screen.innerText;
         let sign = signs.innerText;
         inputData.push(input, sign);
@@ -75,6 +89,7 @@ resetBtn.addEventListener("click", () => {
     inputData = [];
     console.log(inputData);
     screen.innerText = "";
+    count = 0;
 });
 
 // Clear button functionality
