@@ -17,6 +17,7 @@ let count = 0;
 //     });
 // }
 
+// The function that handles calculation of inputs
 const calculate = (firstInput, secondInput) => {
     let num1 = Number(firstInput[0]);
     let sign = firstInput[1];
