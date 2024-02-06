@@ -9,6 +9,25 @@ const dotSign = document.querySelector(".dot-sign");
 let inputData = [];
 let count = 0;
 
+console.log(screen.offsetWidth);
+
+// Function to get Font size
+const getFontSize = (screenObj) => {
+    style = window
+        .getComputedStyle(screenObj, null)
+        .getPropertyValue("font-size");
+    return parseFloat(style);
+};
+
+// Function to get text width
+const getTextWidth = (text, font) => {
+    canvas = document.createElement("canvas");
+    context = canvas.getContext("2d");
+    context.font = font;
+    width = context.measureText(text).width;
+    return Math.ceil(width);
+};
+
 // for (numBtn of numBtns) {
 //     console.log(numBtn.innerText);
 //     numBtn.addEventListener("click", () => {
@@ -40,18 +59,28 @@ allBtns.forEach((allBtn) => {
         setTimeout(() => {
             allBtn.classList.remove("animate-btn");
         }, 100);
-        console.log(allBtn.innerText);
     });
 });
 
 numBtns.forEach((numBtn) => {
     numBtn.addEventListener("click", () => {
         if (screen.innerText.length > 22) {
-            document.querySelector(".calc-screen").innerText =
-                "Error!! Exceeded Char Limit!!";
+            screen.innerText = "Error!! Exceeded Char Limit!!";
         } else {
-            document.querySelector(".calc-screen").innerText +=
-                numBtn.innerText;
+            screen.innerText += numBtn.innerText;
+            let fontSize = getFontSize(screen);
+            console.log(fontSize);
+
+            font = `${fontSize}px Kanit`;
+
+            let fontWidth = getTextWidth(screen.innerText, font);
+            console.log(fontWidth);
+            console.log(screen.offsetWidth);
+
+            if (screen.offsetWidth - fontWidth <= 10) {
+                console.log("Code runs");
+                screen.style.fontSize = "25px";
+            }
         }
     });
 });
