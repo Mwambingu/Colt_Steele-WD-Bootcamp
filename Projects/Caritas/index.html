@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="app.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <main class="container">
+            <h1>Caritas Calculator</h1>
+            <div class="calc-container">
+                <form action="">
+                    <div class="form-content">
+                        <label for="deposit">Enter monthly deposit (Kes)</label>
+                        <input
+                            type="number"
+                            name="deposit"
+                            id="deposit"
+                            placeholder="0"
+                        />
+                    </div>
+                    <div class="form-content">
+                        <label for="interestRate"
+                            >Enter interest rate (%)</label
+                        >
+                        <input
+                            type="text"
+                            name="interestRate"
+                            id="interestRate"
+                            placeholder="0"
+                        />
+                    </div>
+                    <div class="form-content">
+                        <select name="startMonth" id="startMonth">
+                            <option value="" selected>
+                                Select Start Month
+                            </option>
+                            <option value="jan">January</option>
+                            <option value="feb">February</option>
+                            <option value="mar">March</option>
+                            <option value="apr">April</option>
+                            <option value="may">May</option>
+                            <option value="jun">June</option>
+                            <option value="jul">July</option>
+                            <option value="ast">August</option>
+                            <option value="sep">September</option>
+                            <option value="oct">October</option>
+                            <option value="nov">November</option>
+                            <option value="dec">December</option>
+                        </select>
+                    </div>
+                    <div class="form-content">
+                        <button type="submit">Calculate</button>
+                    </div>
+                </form>
+                <div class="total-container">
+                    <p>KES <span class="total">0</span></p>
+                </div>
+            </div>
+        </main>
+
+        <script src="app.js"></script>
+    </body>
+</html>
