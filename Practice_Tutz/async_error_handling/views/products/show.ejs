@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,700;0,800;1,300;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/app.css" />
+        <title>Groceries</title>
+    </head>
+    <body>
+        <h1 class="page-title"><%= product.name %></h1>
+        <div class="table-container">
+            <table>
+                <tr class="table-head">
+                    <th>Property</th>
+                    <th>Data</th>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">ID</td>
+                    <td class="table-data t-right"><%= product.id%></td>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">Name</td>
+                    <td class="table-data t-right"><%= product.name %></td>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">Price</td>
+                    <td class="table-data t-right">
+                        <%= product.price.online %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">Quantity</td>
+                    <td class="table-data t-right"><%= product.quantity %></td>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">Is on sale</td>
+                    <td class="table-data t-right"><%= product.isOnSale %></td>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">Categories</td>
+                    <td class="table-data t-right">
+                        <%= product.categories %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-property t-left">Size</td>
+                    <td class="table-data t-right"><%= product.size %></td>
+                </tr>
+            </table>
+            <div class="shw-btn-container">
+                <a href="/products/" class="btn primary">Go back</a>
+                <a href="/products/<%=product.id%>/edit" class="btn primary"
+                    >Update</a
+                >
+            </div>
+        </div>
+    </body>
+</html>

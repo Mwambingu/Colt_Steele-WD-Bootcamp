@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,700;0,800;1,300;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/app.css" />
+        <title>Groceries</title>
+    </head>
+    <body>
+        <h1 class="page-title">Create New Product</h1>
+        <div class="form-container">
+            <form action="/products/" method="post">
+                <div class="form-control-container">
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Enter product name"
+                    />
+                    <input
+                        type="text"
+                        name="storePrice"
+                        id="storePrice"
+                        placeholder="Enter store price"
+                    />
+                    <input
+                        type="text"
+                        name="onlinePrice"
+                        id="onlinePrice"
+                        placeholder="Enter online price"
+                    />
+                    <input
+                        type="text"
+                        name="quantity"
+                        id="quantity"
+                        placeholder="Enter product quantity"
+                    />
+                    <div class="size-selector">
+                        <label for="size">Choose product size: </label>
+                        <select name="size" id="size">
+                            <option value="125g">125g</option>
+                            <option value="250g">250g</option>
+                            <option value="300g">300g</option>
+                            <option value="1Kg">1Kg</option>
+                            <option value="2Kg">2kg</option>
+                        </select>
+                    </div>
+                    <div class="submit-btns">
+                        <button id="submit-btn" class="btn primary">
+                            Submit
+                        </button>
+                        <button class="btn primary">
+                            <a href="/products/">Go back</a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="shw-btn-container"></div>
+        </div>
+    </body>
+</html>
