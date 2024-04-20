@@ -178,6 +178,18 @@ app.get("/error", (req, res) => {
     throw new AppError("NOT ALLOWED", 401);
 });
 
+const handleValidationError = (err) => {
+    console.dir(err);
+    return new AppError(`Validation Failed....${err.message}`, 400);
+};
+
+// Handling and differentiating Mongoose errors
+app.use((err, req, res, next) => {
+    console.log(err.name);
+    if (err.name === "ValidationError") err = handleValidationError(err);
+    next(err);
+});
+
 app.use((err, req, res, next) => {
     const { status = 500, message = "something went wrong" } = err;
     res.status(status).send(message);
