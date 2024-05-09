@@ -1,5 +1,7 @@
 const form = document.querySelector("form");
 const totalSpan = document.querySelector(".total");
+const switchContainer = document.querySelector(".switch");
+const switchButton = document.querySelector(".switch div");
 
 const months = [
     "jan",
@@ -65,6 +67,17 @@ form.addEventListener("submit", (evt) => {
     //         months.indexOf(startMonth) + 1
     //     }`
     // );
+});
+
+switchContainer.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    if (switchButton.className === "fixed") {
+        switchButton.classList.remove("fixed");
+        switchButton.classList.add("custom");
+    } else {
+        switchButton.classList.remove("custom");
+        switchButton.classList.add("fixed");
+    }
 });
 
 // console.log("SessionStac".slice(-1));
