@@ -270,3 +270,13 @@ input[type="number"] {
     align-self: flex-end;
     background-color: white;
 }
+
+.custom-form-content {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.custom-form-content input {
+    width: 50px;
+}
