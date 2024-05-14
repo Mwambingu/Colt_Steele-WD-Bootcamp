@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { User } = require("./Models/user");
 const { Product, Farm } = require("./Models/farm");
+const { TweetUser, Tweet } = require("./Models/tweet");
 
 main().catch((err) => console.log(err));
 
@@ -10,6 +11,8 @@ async function main() {
     const user = await User.findOne({});
     const product = await Product.findOne({});
     const farm = await Farm.findOne({});
+    const tweet = await Tweet.findOne({});
+    const tweetUser = await TweetUser.findOne({});
 
     if (!user) {
         const u = await new User({
@@ -50,7 +53,32 @@ async function main() {
         await farm.save();
     } else {
         console.log("Farm exists");
-        const farm = await Farm.findOne({});
+        // Using populate to retrieve the data from the related object
+        const farm = await Farm.findOne({}).populate("products");
+        console.log(farm);
         console.log(farm.products[0]);
+    }
+
+    if (!tweetUser) {
+        const tweetUser = new TweetUser({
+            username: "Odero",
+            age: 34,
+        });
+
+        const tweet = new Tweet({
+            text: "I am an Idiot but still think i'm clever than you.",
+            likes: 3000,
+        });
+
+        tweet.user = tweetUser;
+
+        await tweetUser.save();
+        await tweet.save();
+    } else {
+        console.log("Tweet User exists");
+
+        const tweet = await Tweet.findOne({}).populate("user", "username");
+
+        console.log(tweet);
     }
 }

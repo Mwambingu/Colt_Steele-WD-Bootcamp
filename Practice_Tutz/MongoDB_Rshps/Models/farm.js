@@ -12,6 +12,7 @@ const productSchema = new Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
+// Setting up schema with references to products - one to many relationship
 const farmSchema = new Schema({
     name: String,
     city: String,
