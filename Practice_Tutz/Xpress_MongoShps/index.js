@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
 const path = require("path");
 const morgan = require("morgan");
@@ -12,12 +13,6 @@ const port = "3000";
 main().catch((err) => {
     console.log(err);
 });
-
-app.set("view engine", "ejs");
-app.use(morgan("tiny"));
-app.use("/static", express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/xpressship");
@@ -76,12 +71,34 @@ async function main() {
 
         farm.save();
     }
-
-    app.get("/", (req, res) => {
-        res.render("index");
-    });
-
-    app.listen(port, () => {
-        console.log("Listening on port " + port);
-    });
 }
+
+app.set("view engine", "ejs");
+app.use(morgan("tiny"));
+app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(methodOverride("_method"));
+
+app.get("/", async (req, res) => {
+    const farms = await Farm.find();
+    res.render("index", { farms });
+});
+
+app.post("/", async (req, res) => {
+    console.log("Posted!");
+    res.send("Posted");
+});
+
+app.get("/new", (req, res) => {
+    res.render("new");
+});
+
+app.get("/farm/id:", (req, res) => {
+    const { id } = req.body;
+    console.log(id);
+});
+
+app.listen(port, () => {
+    console.log("Listening on port " + port);
+});
