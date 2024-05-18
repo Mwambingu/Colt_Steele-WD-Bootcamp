@@ -10,6 +10,9 @@
         <h1>Welcome to Xpress Ships</h1>
         <% if(farms.length >= 1) {%> <%for (farm of farms) {%>
         <div><%= farm.farmName %></div>
+        <%}%> <%}%> <% if(products.length >= 1) {%> <%for (product of products)
+        {%>
+        <div><%= product.productName %></div>
         <%}%> <%}%>
     </body>
 </html>

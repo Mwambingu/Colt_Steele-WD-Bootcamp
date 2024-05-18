@@ -82,8 +82,9 @@ app.use(methodOverride("_method"));
 
 app.get("/", async (req, res) => {
     const farms = await Farm.find();
+    const products = await Product.find();
     console.log(farms[0].id);
-    res.render("index", { farms });
+    res.render("index", { farms, products });
 });
 
 app.post("/", async (req, res) => {
