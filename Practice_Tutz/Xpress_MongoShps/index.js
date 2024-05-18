@@ -82,6 +82,7 @@ app.use(methodOverride("_method"));
 
 app.get("/", async (req, res) => {
     const farms = await Farm.find();
+    console.log(farms[0].id);
     res.render("index", { farms });
 });
 
@@ -90,13 +91,24 @@ app.post("/", async (req, res) => {
     res.send("Posted");
 });
 
-app.get("/new", (req, res) => {
-    res.render("new");
+app.get("/farms/new", (req, res) => {
+    res.render("./farms/new");
 });
 
-app.get("/farm/id:", (req, res) => {
-    const { id } = req.body;
-    console.log(id);
+app.get("/farms/:id", async (req, res) => {
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    res.render("./farms/show", { farm });
+});
+
+app.get("/products/new", (req, res) => {
+    res.render("./products/new");
+});
+
+app.get("/products/:id", async (req, res) => {
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    res.render("./products/show", { farm });
 });
 
 app.listen(port, () => {
