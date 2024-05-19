@@ -150,7 +150,7 @@ h1 {
 }
 
 .input-form,
-button {
+.form-btn {
     font-size: 1.5rem;
     font-family: "Montserrat Alternates", sans-serif;
 }
@@ -169,7 +169,7 @@ button {
     height: 50px;
 }
 
-button {
+.form-btn {
     width: 120px;
     align-self: center;
     padding: 10px;
@@ -208,7 +208,7 @@ h2 {
 }
 
 .wrapper {
-    margin: 15px 0;
+    margin-bottom: 30px;
 }
 
 .content-wrapper {
@@ -253,4 +253,21 @@ td {
 .table-header {
     color: white;
     background-color: black;
+}
+
+.new-nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.new-nav a {
+    text-align: center;
+    text-decoration: none;
+    width: 120px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(42, 170, 38);
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
 }
