@@ -3,17 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/app.css" />
         <title>New Farm</title>
     </head>
     <body>
         <h1>New Farm</h1>
-        <form action="/" method="POST">
-            <label for="farmName">Farm Name</label>
-            <input type="text" name="farmName" id="farmName" />
-            <label for="location">Farm Location</label>
-            <input type="text" name="location" id="location" />
+        <form action="/" method="POST" class="input-form">
+            <div class="form-label">
+                <label for="farmName">Name</label>
+                <input type="text" name="farmName" id="farmName" />
+            </div>
+            <div class="form-label">
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location" />
+            </div>
 
-            <button type="submit">Add Farm</button>
+            <button type="submit">Add</button>
         </form>
     </body>
 </html>

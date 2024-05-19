@@ -3,20 +3,24 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/app.css" />
         <title>New Farm</title>
     </head>
     <body>
         <h1>New product</h1>
-        <form action="/" method="POST">
-            <label for="productName">Product Name</label>
-            <input type="text" name="productName" id="farmName" />
-            <label for="location">Produce Type</label>
-            <select name="produce" id="produce">
-                <option value="Animal">Animal</option>
-                <option value="Plant">Plant</option>
-            </select>
-
-            <button type="submit">Add Product</button>
+        <form action="/" method="POST" class="input-form">
+            <div class="form-label">
+                <label for="productName">Name</label>
+                <input type="text" name="productName" id="farmName" />
+            </div>
+            <div class="form-label">
+                <label for="location">Type</label>
+                <select name="produce" id="produce">
+                    <option value="Animal">Animal</option>
+                    <option value="Plant">Plant</option>
+                </select>
+            </div>
+            <button type="submit">Add</button>
         </form>
     </body>
 </html>

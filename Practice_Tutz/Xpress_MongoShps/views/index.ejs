@@ -8,11 +8,27 @@
     </head>
     <body>
         <h1>Welcome to Xpress Ships</h1>
-        <% if(farms.length >= 1) {%> <%for (farm of farms) {%>
-        <div><%= farm.farmName %></div>
-        <%}%> <%}%> <% if(products.length >= 1) {%> <%for (product of products)
-        {%>
-        <div><%= product.productName %></div>
-        <%}%> <%}%>
+        <div class="container">
+            <div class="wrapper">
+                <h2>Farms</h2>
+
+                <% if(farms.length >= 1) {%> <%for (farm of farms) {%>
+                <div class="content-wrapper">
+                    <div><%= farm.farmName %></div>
+                    <a href="/farms/<%=product.id%>" class="btn">View</a>
+                </div>
+                <%}%> <%}%>
+            </div>
+            <div class="wrapper">
+                <h2>Products</h2>
+
+                <% if(products.length >= 1) {%> <%for (product of products) {%>
+                <div class="content-wrapper">
+                    <div><%= product.productName %></div>
+                    <a href="/products/<%=product.id%>" class="btn">View</a>
+                </div>
+                <%}%> <%}%>
+            </div>
+        </div>
     </body>
 </html>
