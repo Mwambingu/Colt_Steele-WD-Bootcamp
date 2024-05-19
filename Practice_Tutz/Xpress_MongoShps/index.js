@@ -99,6 +99,8 @@ app.get("/farms/new", (req, res) => {
 app.get("/farms/:id", async (req, res) => {
     const { id } = req.params;
     const farm = await Farm.findById(id);
+    console.log("Printing this....");
+    console.log(farm);
     res.render("./farms/show", { farm });
 });
 
@@ -108,8 +110,9 @@ app.get("/products/new", (req, res) => {
 
 app.get("/products/:id", async (req, res) => {
     const { id } = req.params;
-    const farm = await Farm.findById(id);
-    res.render("./products/show", { farm });
+    console.log("id");
+    const product = await Product.findById(id);
+    res.render("./products/show", { product });
 });
 
 app.listen(port, () => {

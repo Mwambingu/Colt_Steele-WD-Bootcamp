@@ -213,4 +213,44 @@ h2 {
 
 .content-wrapper {
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-wrapper a {
+    text-align: center;
+    text-decoration: none;
+    width: 50px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(4, 92, 255);
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 500px;
+}
+
+.first-column {
+    width: 120px;
+}
+
+th,
+td {
+    padding: 15px;
+}
+
+.table-header {
+    color: white;
+    background-color: black;
 }

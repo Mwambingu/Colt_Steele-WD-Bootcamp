@@ -7,22 +7,24 @@
         <title>Show Farm</title>
     </head>
     <body>
-        <h1>Show Farm</h1>
-        <table>
-            <thead>
-                <th>Property</th>
-                <th>Value</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td><%=farm.farmName%></td>
-                </tr>
-                <tr>
-                    <td>Location</td>
-                    <td><%=farm.location%></td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Show Product</h1>
+        <div class="container">
+            <table>
+                <thead>
+                    <th class="table-header first-column">Property</th>
+                    <th class="table-header">Value</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="first-column">Name</td>
+                        <td><%=product.productName%></td>
+                    </tr>
+                    <tr>
+                        <td class="first-column">Produce</td>
+                        <td><%=product.produce%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
