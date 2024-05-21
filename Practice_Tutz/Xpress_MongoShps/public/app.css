@@ -239,6 +239,7 @@ td {
 
 table {
     width: 500px;
+    margin-bottom: 30px;
 }
 
 .first-column {
@@ -270,4 +271,12 @@ td {
     border: none;
     border-radius: 5%;
     cursor: pointer;
+}
+
+label {
+    font-weight: 700;
+}
+
+#btn-danger {
+    background-color: red;
 }

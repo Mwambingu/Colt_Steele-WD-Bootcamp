@@ -57,7 +57,7 @@ async function main() {
 
         await bean.save();
         await milk.save();
-        await bean.save();
+        await beef.save();
         await banana.save();
     }
 
@@ -87,9 +87,34 @@ app.get("/", async (req, res) => {
     res.render("index", { farms, products });
 });
 
-app.post("/", async (req, res) => {
-    console.log("Posted!");
-    res.send("Posted");
+app.post("/farm", async (req, res) => {
+    const { farmName, location } = req.body;
+    if (farmName && location) {
+        const farm = new Farm({ farmName, location });
+        await farm.save();
+        res.redirect("/");
+    } else {
+        res.send("Missing fields!!");
+    }
+});
+
+app.post("/product", async (req, res) => {
+    const { productName, produce } = req.body;
+
+    if (productName && produce) {
+        const product = new product({ productName, produce });
+        await product.save();
+        res.redirect("/");
+    } else {
+        res.send("Missing fields!!");
+    }
+});
+
+app.delete("/", async (req, res) => {
+    const { id } = req.query;
+    const deleted = await Farm.findOneAndDelete(id);
+    console.log(deleted);
+    res.redirect("/");
 });
 
 app.get("/farms/new", (req, res) => {
