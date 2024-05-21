@@ -15,9 +15,17 @@
                 <% if(farms.length >= 1) {%> <%for (farm of farms) {%>
                 <div class="content-wrapper">
                     <div><%= farm.farmName %></div>
+                    <a id="modal-btn">Add Product</a>
                     <a href="/farms/<%=farm.id%>" class="btn">View</a>
                 </div>
                 <%}%> <%}%>
+                <!-- Add Product Modal -->
+                <div id="productModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Modal Text</p>
+                    </div>
+                </div>
                 <hr />
             </div>
             <div class="wrapper">
@@ -36,4 +44,31 @@
             </div>
         </div>
     </body>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("productModal");
+
+        // Get the button that opens the modal
+        var btn = document.querySelector("#modal-btn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
 </html>
