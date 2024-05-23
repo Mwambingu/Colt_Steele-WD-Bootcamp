@@ -330,3 +330,21 @@ label {
     text-decoration: none;
     cursor: pointer;
 }
+
+.add-btn-wrap {
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 50px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(42, 170, 38);
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
