@@ -289,7 +289,7 @@ label {
     background-color: red;
 }
 
-#modal-btn {
+.content-wrapper .modal-btn {
     width: 110px;
 }
 

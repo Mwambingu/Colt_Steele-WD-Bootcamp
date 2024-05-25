@@ -15,7 +15,9 @@
                 <% if(farms.length >= 1) {%> <%for (farm of farms) {%>
                 <div class="content-wrapper">
                     <div><%= farm.farmName %></div>
-                    <a id="modal-btn">Add Product</a>
+                    <a id="modal-btn-<%=farm.id%>" class="modal-btn"
+                        >Add Product</a
+                    >
                     <a href="/farms/<%=farm.id%>" class="btn">View</a>
                 </div>
                 <%}%> <%}%>
@@ -68,18 +70,22 @@
         var modal = document.getElementById("productModal");
 
         // Get the button that opens the modal
-        var btns = document.querySelectorAll("#modal-btn");
+        var btns = document.querySelectorAll(".modal-btn");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
         // When the user clicks on the button, open the modal
         for (btn of btns) {
-            btn.onclick = function () {
-                modal.style.display = "block";
-                console.log("Clicked");
+            const id = btn.id;
+            btn.addEventListener("click", (evt) => {
+                const btn = document.querySelector(`#${id}`);
                 console.log(btn.parentElement);
-            };
+                const modalContainer = document.querySelector("#productModal");
+                const modalForm = modalContainer.querySelector("form");
+                modalForm.action = `/farm/product/:${id}?_method=patch`;
+                console.log(modalForm.action);
+            });
         }
 
         // When the user clicks on <span> (x), close the modal
