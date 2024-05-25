@@ -98,6 +98,11 @@ app.post("/farm", async (req, res) => {
     }
 });
 
+app.patch("/farm/product/:id", (req, res, next) => {
+    console.log("Reached!!");
+    next();
+});
+
 app.post("/product", async (req, res) => {
     const { productName, produce } = req.body;
 

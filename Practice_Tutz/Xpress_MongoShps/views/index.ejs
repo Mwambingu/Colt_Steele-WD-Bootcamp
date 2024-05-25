@@ -13,7 +13,7 @@
                 <h2>Farms</h2>
 
                 <% if(farms.length >= 1) {%> <%for (farm of farms) {%>
-                <div class="content-wrapper">
+                <div id="<%=farm.id%>" class="content-wrapper">
                     <div><%= farm.farmName %></div>
                     <a id="modal-btn-<%=farm.id%>" class="modal-btn"
                         >Add Product</a
@@ -27,24 +27,25 @@
                         <span class="close">&times;</span>
                         <p>Add Product</p>
                         <hr />
-                        <% if (products.length > 0) {%> <% for (product of
-                        products) {%>
-                        <form method="post"></form>
-                        <div class="checkbox">
-                            <label for="<%=product.productName%>"
-                                ><%=product.productName%></label
-                            >
-                            <input
-                                type="checkbox"
-                                id="<%=product.productName%>"
-                                name="<%=product.productName%>"
-                                value="<%=product.id%>"
-                            />
-                        </div>
-                        <%}%> <%}%>
-                        <div class="add-btn-wrap">
-                            <a class="btn">Add</a>
-                        </div>
+                        <form id="add-product-form" method="post">
+                            <% if (products.length > 0) {%> <% for (product of
+                            products) {%>
+                            <div class="checkbox">
+                                <label for="<%=product.productName%>"
+                                    ><%=product.productName%></label
+                                >
+                                <input
+                                    type="checkbox"
+                                    id="<%=product.productName%>"
+                                    name="<%=product.productName%>"
+                                    value="<%=product.id%>"
+                                />
+                            </div>
+                            <%}%> <%}%>
+                            <div class="add-btn-wrap">
+                                <a class="btn">Add</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <hr />
@@ -79,11 +80,12 @@
         for (btn of btns) {
             const id = btn.id;
             btn.addEventListener("click", (evt) => {
+                modal.style.display = "block";
                 const btn = document.querySelector(`#${id}`);
                 console.log(btn.parentElement);
                 const modalContainer = document.querySelector("#productModal");
                 const modalForm = modalContainer.querySelector("form");
-                modalForm.action = `/farm/product/:${id}?_method=patch`;
+                modalForm.action = `/farm/product/${btn.parentElement.id}?_method=patch`;
                 console.log(modalForm.action);
             });
         }
@@ -104,7 +106,9 @@
         const addBtn = document.querySelector(".add-btn-wrap a");
         addBtn.addEventListener("click", (evt) => {
             evt.preventDefault();
-            addBtn.parentElement.submit();
+            const form = document.querySelector("#add-product-form");
+            form.submit();
+            modal.style.display = "none";
         });
     </script>
 </html>
