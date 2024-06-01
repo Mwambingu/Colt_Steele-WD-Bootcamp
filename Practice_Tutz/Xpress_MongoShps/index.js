@@ -98,9 +98,34 @@ app.post("/farm", async (req, res) => {
     }
 });
 
-app.patch("/farm/product/:id", (req, res, next) => {
-    console.log("Reached!!");
-    next();
+app.patch("/farm/product/:id", async (req, res) => {
+    const farmId = req.params.id;
+    const productIds = [];
+
+    const farm = await Farm.findOne({ _id: farmId });
+    console.log(farm);
+
+    for (let key in req.body) {
+        productIds.push(req.body[key]);
+    }
+
+    // issue with map and async mongo functions - returns pending promises instead of mongodb objects even aftaer awaiting
+
+    // console.log(productIds);
+    // const products = productIds.map(async (id) => {
+    //     let product = await Product.findOne({ _id: id });
+    //     console.log(product);
+    //     return product;
+    // });
+
+    for (let id of productIds) {
+        product = await Product.findById({ _id: id });
+        farm.products.push(product);
+    }
+
+    await farm.save();
+
+    res.redirect("/");
 });
 
 app.post("/product", async (req, res) => {
