@@ -23,6 +23,12 @@
                         <td class="first-column">Produce</td>
                         <td><%=product.produce%></td>
                     </tr>
+                    <% if product.products.length > 0 {%>
+                    <tr>
+                        <td class="first-column">Produce</td>
+                        <td><%=product.produce%></td>
+                    </tr>
+                    <%}%>
                 </tbody>
             </table>
         </div>

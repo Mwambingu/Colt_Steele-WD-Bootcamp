@@ -153,10 +153,22 @@ app.get("/farms/new", (req, res) => {
 
 app.get("/farms/:id", async (req, res) => {
     const { id } = req.params;
-    const farm = await Farm.findById(id);
+    const farm = await Farm.findById(id).populate("products");
     console.log("Printing this....");
-    console.log(farm);
-    res.render("./farms/show", { farm });
+
+    let products = "";
+    let productsLen = farm.products.length;
+
+    for (product of farm.products) {
+        if (productsLen > 1) {
+            products += `${product.productName}, `;
+            productsLen--;
+        } else {
+            products += product.productName;
+        }
+    }
+
+    res.render("./farms/show", { farm, products });
 });
 
 app.get("/products/new", (req, res) => {
