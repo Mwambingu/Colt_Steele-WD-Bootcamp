@@ -10,7 +10,7 @@ const port = 3000;
 main().catch((err) => console.log(err));
 
 async function main() {
-    mongoose.connect("mongodb://localhost:27017/grocery");
+    mongoose.connect("mongodb://localhost:27017/grocery2");
     console.log("connected to db....");
 }
 
@@ -34,7 +34,6 @@ app.get("/farms", async (req, res) => {
 });
 
 // PRODUCT ROUTES
-
 app.get("/products", async (req, res) => {
     const products = await Product.find({});
     res.render("./products/index", { products });

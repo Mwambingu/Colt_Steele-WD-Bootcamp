@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const { Product } = require("./models/product");
+const Farm = require("./models/farm");
 
 main().catch((err) => console.log(err));
 
@@ -49,5 +50,36 @@ async function main() {
         },
     ];
 
-    Product.insertMany(produce);
+    const farms = [
+        {
+            name: "Maindi Mingi",
+            city: "Kitui",
+            email: "maindimingi@maindi.com",
+        },
+        {
+            name: "Omena Tamu",
+            city: "Kisumu",
+            email: "omenatamu@flavorful.com",
+        },
+        {
+            name: "Pocho Pocho",
+            city: "Mombasa",
+            email: "mapochopocho@upocho.com",
+        },
+        {
+            name: "Pocho Pocho",
+            city: "Mombasa",
+            email: "mapochopocho@upocho.com",
+        },
+        {
+            name: "Maziwa Bilamaji",
+            city: "Nyeri",
+            email: "maziwa@bilamaji.com",
+        },
+    ];
+
+    await Product.insertMany(produce);
+    await Farm.insertMany(farms);
+
+    mongoose.disconnect();
 }
