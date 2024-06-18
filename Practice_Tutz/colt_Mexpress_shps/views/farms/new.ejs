@@ -15,48 +15,33 @@
     <body>
         <h1 class="page-title">Create New Product</h1>
         <div class="form-container">
-            <form action="/products/" method="post">
+            <form action="/farms/" method="post">
                 <div class="form-control-container">
                     <input
                         type="text"
                         name="name"
                         id="name"
-                        placeholder="Enter product name"
+                        placeholder="Enter farm name"
                     />
                     <input
                         type="text"
-                        name="storePrice"
-                        id="storePrice"
-                        placeholder="Enter store price"
+                        name="city"
+                        id="city"
+                        placeholder="Enter city name"
                     />
                     <input
-                        type="text"
-                        name="onlinePrice"
-                        id="onlinePrice"
-                        placeholder="Enter online price"
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter email"
                     />
-                    <input
-                        type="text"
-                        name="quantity"
-                        id="quantity"
-                        placeholder="Enter product quantity"
-                    />
-                    <div class="size-selector">
-                        <label for="size">Choose product size: </label>
-                        <select name="size" id="size">
-                            <option value="125g">125g</option>
-                            <option value="250g">250g</option>
-                            <option value="300g">300g</option>
-                            <option value="1Kg">1Kg</option>
-                            <option value="2Kg">2kg</option>
-                        </select>
-                    </div>
+
                     <div class="submit-btns">
                         <button id="submit-btn" class="btn primary">
                             Submit
                         </button>
                         <button class="btn primary">
-                            <a href="/products/">Go back</a>
+                            <a href="/farms/">Go back</a>
                         </button>
                     </div>
                 </div>

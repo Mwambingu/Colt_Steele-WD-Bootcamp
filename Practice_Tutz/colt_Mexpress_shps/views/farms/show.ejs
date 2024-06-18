@@ -13,7 +13,7 @@
         <title>Groceries</title>
     </head>
     <body>
-        <h1 class="page-title"><%= product.name %></h1>
+        <h1 class="page-title"><%= farm.name %></h1>
         <div class="table-container">
             <table>
                 <tr class="table-head">
@@ -22,40 +22,24 @@
                 </tr>
                 <tr>
                     <td class="table-property t-left">ID</td>
-                    <td class="table-data t-right"><%= product.id%></td>
+                    <td class="table-data t-right"><%= farm.id%></td>
                 </tr>
                 <tr>
                     <td class="table-property t-left">Name</td>
-                    <td class="table-data t-right"><%= product.name %></td>
+                    <td class="table-data t-right"><%= farm.name %></td>
                 </tr>
                 <tr>
-                    <td class="table-property t-left">Price</td>
-                    <td class="table-data t-right">
-                        <%= product.price.online %>
-                    </td>
+                    <td class="table-property t-left">City</td>
+                    <td class="table-data t-right"><%= farm.city %></td>
                 </tr>
                 <tr>
-                    <td class="table-property t-left">Quantity</td>
-                    <td class="table-data t-right"><%= product.quantity %></td>
-                </tr>
-                <tr>
-                    <td class="table-property t-left">Is on sale</td>
-                    <td class="table-data t-right"><%= product.isOnSale %></td>
-                </tr>
-                <tr>
-                    <td class="table-property t-left">Categories</td>
-                    <td class="table-data t-right">
-                        <%= product.categories %>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-property t-left">Size</td>
-                    <td class="table-data t-right"><%= product.size %></td>
+                    <td class="table-property t-left">Email</td>
+                    <td class="table-data t-right"><%= farm.email %></td>
                 </tr>
             </table>
             <div class="shw-btn-container">
-                <a href="/products/" class="btn primary">Go back</a>
-                <a href="/products/<%=product.id%>/edit" class="btn primary"
+                <a href="/farms/" class="btn primary">Go back</a>
+                <a href="/farms/<%=farm.id%>/edit" class="btn primary"
                     >Update</a
                 >
             </div>

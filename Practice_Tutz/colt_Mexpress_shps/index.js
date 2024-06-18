@@ -5,6 +5,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const { Product } = require("./models/product.js");
 const Farm = require("./models/farm.js");
+const { checkServerIdentity } = require("tls");
+const { createPublicKey } = require("crypto");
 const port = 3000;
 
 main().catch((err) => console.log(err));
@@ -31,6 +33,82 @@ app.get("/", (req, res) => {
 app.get("/farms", async (req, res) => {
     const farms = await Farm.find();
     res.render("./farms/index", { farms });
+});
+
+app.post("/farms", async (req, res) => {
+    try {
+        const { name, city, email } = req.body;
+
+        newFarm = new Farm({
+            name: name,
+            city: city,
+            email: email,
+        });
+
+        await newFarm.save();
+
+        res.redirect("/farms");
+    } catch (e) {
+        console.log(e);
+        res.redirect("/farms");
+    }
+});
+
+app.patch("/farms", async (req, res) => {
+    try {
+        let { name, city, email } = req.body;
+        const { id } = req.query;
+
+        console.log(name, city, email);
+
+        farm = await Farm.findOne({ _id: id });
+
+        if (!name) {
+            name = farm.name;
+        }
+
+        if (!city) {
+            city = farm.city;
+        }
+
+        if (!email) {
+            email = farm.email;
+        }
+
+        update = {
+            name: name,
+            city: city,
+            email: email,
+        };
+
+        const updatedProduct = await Farm.findOneAndUpdate(
+            { _id: id },
+            update,
+            { new: true }
+        );
+
+        console.log(updatedProduct);
+        res.redirect("/farms");
+    } catch (e) {
+        console.log(e);
+        res.redirect("/farms");
+    }
+});
+
+app.get("/farms/new", async (req, res) => {
+    res.render("./farms/new");
+});
+
+app.get("/farms/:id", async (req, res) => {
+    const { id } = req.params;
+    const farm = await Farm.findOne({ _id: id });
+    res.render("./farms/show", { farm });
+});
+
+app.get("/farms/:id/edit", async (req, res) => {
+    const { id } = req.params;
+    const farm = await Farm.findOne({ _id: id });
+    res.render("./farms/update", { farm });
 });
 
 // PRODUCT ROUTES
