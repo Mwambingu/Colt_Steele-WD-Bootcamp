@@ -183,17 +183,40 @@ app.patch("/products", async (req, res) => {
     }
 });
 
-app.delete("/products", async (req, res) => {
-    const { id } = req.query;
+// app.delete("/products", async (req, res) => {
+//     const { id } = req.query;
+
+//     console.log(id);
+
+//     product = await Product.findOneAndDelete({ _id: id });
+
+//     console.log(
+//         `Product: ${product.name} of ID: ${product.id} has been deleted`
+//     );
+//     res.redirect("/products");
+// });
+
+app.delete("/", async (req, res) => {
+    const { id, type } = req.query;
 
     console.log(id);
+    console.log(type);
 
-    product = await Product.findOneAndDelete({ _id: id });
+    if (type === "product") {
+        product = await Product.findOneAndDelete({ _id: id });
 
-    console.log(
-        `Product: ${product.name} of ID: ${product.id} has been deleted`
-    );
-    res.redirect("/products");
+        console.log(
+            `Product: ${product.name} of ID: ${product.id} has been deleted`
+        );
+        res.redirect("/products");
+    }
+
+    if (type === "farm") {
+        farm = await Farm.findOneAndDelete({ _id: id });
+
+        console.log(`Farm: ${farm.name} of ID: ${farm.id} has been deleted`);
+        res.redirect("/farms");
+    }
 });
 
 app.get("/products/new", async (req, res) => {

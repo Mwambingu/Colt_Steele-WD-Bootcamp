@@ -22,7 +22,7 @@
                     <a class="btn success" href="/farms/<%=farm.id %>">View</a>
                     <form
                         id="delete-form"
-                        action="/products?_method=delete&id=<%=farm.id%>"
+                        action="/?_method=delete&id=<%=farm.id%>&type=farm"
                         method="post"
                     >
                         <a id="submit-link" class="btn danger">Delete</a>
