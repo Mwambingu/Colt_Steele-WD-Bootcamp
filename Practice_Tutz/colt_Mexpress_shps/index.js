@@ -111,6 +111,9 @@ app.get("/farms/:id/edit", async (req, res) => {
     res.render("./farms/update", { farm });
 });
 
+app.get("/farms/:id/product/new", (req, res) => {
+    res.render("./products/new");
+});
 // PRODUCT ROUTES
 app.get("/products", async (req, res) => {
     const products = await Product.find({});
